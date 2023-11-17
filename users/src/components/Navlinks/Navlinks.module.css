@@ -11,8 +11,9 @@
   font-weight: 500;
 }
 
-.activelink {
+.navlink:hover {
   background-color: #829fff;
   color: #ffffff;
+  cursor: pointer;
   border-radius: 10px;
 }

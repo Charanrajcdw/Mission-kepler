@@ -4,7 +4,7 @@ import styles from "./Navlinks.module.css";
 function Navlinks({ navLinks }) {
   const navListItems = navLinks.map((navLink, index) => {
     return (
-      <li key={`${index}-nav-link`} className={`${styles.navlink} ${navLink === "New users" ? styles.activelink : ""}`}>
+      <li key={`${index}-nav-link`} className={styles.navlink}>
         {navLink}
       </li>
     );

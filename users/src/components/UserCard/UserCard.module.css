@@ -45,7 +45,7 @@
   font-weight: 400;
 }
 
-.active-card {
+.user-card:hover {
   border: 2px solid #cdd4ea;
   box-shadow: 0 5px 15px #d3d8ed;
 }

@@ -4,7 +4,7 @@ import styles from "./userCard.module.css";
 
 function UserCard({ name, location, tags, image }) {
   return (
-    <div className={`${styles["user-card"]} ${name === "Jesus Weiss" ? styles["active-card"] : ""}`}>
+    <div className={styles["user-card"]}>
       <UserImage image={image} alt={name} />
       <div className={styles["user-details"]}>
         <p className={styles.username}>{name}</p>
