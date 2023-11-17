@@ -1,7 +1,14 @@
+import Header from "./containers/Header/Header";
+import UserDetails from "./containers/UserDetails/UserDetails";
 import "./App.css";
 
 function App() {
-  return <h1>Hello world!</h1>;
+  return (
+    <>
+      <Header />
+      <UserDetails />
+    </>
+  );
 }
 
 export default App;
