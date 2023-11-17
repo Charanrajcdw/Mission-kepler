@@ -6,7 +6,7 @@ function Header() {
   return (
     <header className={styles["header-container"]}>
       <h1 className={styles.title}>{HEADER_DATA.title}</h1>
-      <NavBar />
+      <NavBar placeholder={HEADER_DATA.placeholder} navLinks={HEADER_DATA.navLinks} />
     </header>
   );
 }

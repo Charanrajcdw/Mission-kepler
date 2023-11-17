@@ -1,15 +1,20 @@
 import SearchTab from "../SearchTab/SearchTab";
 import Navlinks from "../Navlinks/Navlinks";
+import PropTypes from "prop-types";
 import styles from "./Navbar.module.css";
-import { HEADER_DATA } from "../../assets/UserData";
 
-function NavBar() {
+function NavBar({ placeholder, navLinks }) {
   return (
     <div className={styles.navbar}>
-      <SearchTab placeholder={HEADER_DATA.placeholder} />
-      <Navlinks navLinks={HEADER_DATA.navLinks} />
+      <SearchTab placeholder={placeholder} />
+      <Navlinks navLinks={navLinks} />
     </div>
   );
 }
+
+NavBar.propTypes = {
+  placeholder: PropTypes.string.isRequired,
+  navLinks: PropTypes.array.isRequired,
+};
 
 export default NavBar;
