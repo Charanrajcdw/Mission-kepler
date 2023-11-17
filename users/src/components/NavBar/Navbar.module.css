@@ -1,5 +1,12 @@
-.navbar{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 1024px) {
+  .navbar {
+    flex-direction: column;
+    gap:30px;
+  }
 }

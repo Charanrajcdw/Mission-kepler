@@ -12,6 +12,7 @@
   align-items: start;
   padding: 2rem 1.5rem;
   width: 70%;
+  overflow: hidden;
 }
 
 .username {
@@ -47,4 +48,16 @@
 .active-card {
   border: 2px solid #cdd4ea;
   box-shadow: 0 5px 15px #d3d8ed;
+}
+
+@media screen and (max-width: 1024px) {
+  .user-card {
+    width: calc(100% / 2 - 14px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .user-card {
+    width: 100%;
+  }
 }

@@ -21,3 +21,9 @@
   color: #707483;
   width: 100%;
 }
+
+@media screen and (max-width: 1024px) {
+  .search-container {
+    width: 100%;
+  }
+}
