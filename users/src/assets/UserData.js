@@ -5,7 +5,13 @@ import user4 from "../../public/images/user4.jpeg";
 import user5 from "../../public/images/user5.jpeg";
 import user6 from "../../public/images/user6.jpeg";
 
-[
+export const HEADER_DATA = {
+  title: "Users",
+  placeholder: "Search users",
+  navLinks: ["Reputation", "New users", "Voters", "Editors", "Moderators"],
+};
+
+export const CONTENT_DATA = [
   {
     name: "Lelah Nicholas",
     location: "Troy, MI",

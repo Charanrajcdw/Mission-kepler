@@ -1,0 +1,23 @@
+.search-container {
+  border: 2px solid #ced4ea;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  width: 32.5%;
+}
+
+.search-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+  padding: 1.5rem;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  appearance: none;
+  font-size: 1.5rem;
+  color: #707483;
+  width: 100%;
+}
