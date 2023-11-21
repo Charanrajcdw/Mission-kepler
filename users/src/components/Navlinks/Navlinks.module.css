@@ -1,0 +1,19 @@
+.navlinks-container {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.navlink {
+  padding: 1.65rem;
+  font-size: 1.5rem;
+  color: #707483;
+  font-weight: 500;
+}
+
+.navlink:hover {
+  background-color: #829fff;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 10px;
+}
