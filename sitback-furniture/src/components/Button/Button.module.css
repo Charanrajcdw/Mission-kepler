@@ -1,0 +1,13 @@
+.btn {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: #000000;
+  border: none;
+  border-bottom-right-radius: 6px;
+}
+
+.category-btn {
+  padding: 12px 28px;
+  margin:14px 0;
+}

@@ -5,7 +5,7 @@ import styles from "./NotFound.module.css";
 const NotFound = () => {
   return (
     <div className={styles["not-found-container"]}>
-      <p>{PAGE_NOT_FOUND.message}</p>
+      <p>{PAGE_NOT_FOUND}</p>
       <Button />
     </div>
   );
