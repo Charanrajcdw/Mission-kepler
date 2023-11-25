@@ -1,0 +1,53 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  padding: 22px 46px;
+  box-shadow: 0px 0px 10px 0px #bbbbbb;
+}
+
+.logo {
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.25px;
+}
+
+.navlinks {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 72px;
+  margin-left: 24px;
+  justify-content: space-between;
+}
+
+.navlink {
+  list-style-type: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.navlink:hover a {
+  padding-bottom: 16.5px;
+  border-bottom: 10px solid #000000;
+}
+
+.navlink-active {
+  padding-bottom: 16.5px;
+  border-bottom: 10px solid #000000;
+}
+
+.username {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  cursor: pointer;
+}
+
+.username span {
+  font-size: 0.7rem;
+  margin-left: 6px;
+}

@@ -3,3 +3,13 @@
 body {
   font-family: "Poppins", sans-serif;
 }
+
+a {
+  cursor: pointer;
+  color: #000000;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
