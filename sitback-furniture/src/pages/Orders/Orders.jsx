@@ -1,5 +1,13 @@
+import CategoriesContainer from "../../containers/CategoriesContainer/CategoriesContainer";
+import OrdersContainer from "../../containers/OrdersContainer/OrdersContainer";
+
 const Orders = () => {
-  return <h1>Orders</h1>;
+  return (
+    <>
+      <OrdersContainer />
+      <CategoriesContainer />
+    </>
+  );
 };
 
 export default Orders;

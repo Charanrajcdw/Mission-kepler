@@ -1,5 +1,7 @@
+import CategoriesContainer from "../../containers/CategoriesContainer/CategoriesContainer";
+
 const Home = () => {
-  return <h1>Home</h1>;
+  return <CategoriesContainer />;
 };
 
 export default Home;
