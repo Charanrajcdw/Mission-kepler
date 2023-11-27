@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import BrokenImage from "../../assets/blank-image.png";
+import BrokenImage from "../../assets/blank-image.jpeg";
 import styles from "./Image.module.css";
 
 const Image = ({ src, alt, className }) => {
