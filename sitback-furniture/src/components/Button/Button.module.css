@@ -20,6 +20,28 @@
   background-color: #ffffff;
 }
 
-.cart-btn, .order-btn {
+.cart-btn,
+.order-btn {
   padding: 12px 20px 10px;
+}
+
+.increment-btn {
+  font-size: 0.8rem;
+  color: #000000;
+  background-color: #ffffff;
+}
+
+.decrement-btn {
+  font-size: 1.2rem;
+  margin-top: -3px;
+  color: #000000;
+  background-color: #ffffff;
+}
+
+.cart-tab-btn {
+  position: absolute;
+  bottom: -16px;
+  right: 20px;
+  padding: 8px 12px;
+  font-size: 0.65rem;
 }

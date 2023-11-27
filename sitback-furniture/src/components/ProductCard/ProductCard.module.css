@@ -1,11 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
-
 .card {
   flex-basis: 23%;
 }
 
 .big-product-card {
-  flex-basis: 31%;
+  flex-basis: 30.8%;
 }
 
 .order-card {

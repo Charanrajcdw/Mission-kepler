@@ -1,6 +1,6 @@
 export const transformToIndianRupee = (price) => {
   price = parseInt(price);
-  return `${price.toLocaleString("en-IN")}`;
+  return price.toLocaleString("en-IN");
 };
 
 export const getGuaranteeMessage = (guarantee) => {

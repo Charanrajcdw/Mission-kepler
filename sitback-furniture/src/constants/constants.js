@@ -8,6 +8,9 @@ export const BUTTON = {
   shopNow: "SHOP NOW",
   wishlist: "ADD TO WISHLIST",
   cart: "ADD TO CART",
+  placeOrder: "PLACE ORDER",
+  increment: "+",
+  decrement: "-",
 };
 
 export const CATEGORIES = {
@@ -22,9 +25,18 @@ export const PRODUCTS = {
 };
 
 export const ORDERS = {
-  title: 'Order Confirmation',
-  description: 'Thank you for shopping with us. The items will be delivered withing 7 days.',
-  noOrders: 'You have not made any order yet.'
+  title: "Order Confirmation",
+  description: "Thank you for shopping with us. The items will be delivered withing 7 days.",
+  noOrders: "You have not made any order yet.",
+};
+
+export const CART = {
+  emptyCart: "No products found. Add any product to your ",
+  amount: "TOTAL AMOUNT",
+  cart: "cart",
+  wishlist: "wishlist",
+  cartTab: "MY CART",
+  wishlistTab: "MY WISHLIST",
 };
 
 export const PAGE_NOT_FOUND = "This page is not available. Click below button to redirect to home page";
