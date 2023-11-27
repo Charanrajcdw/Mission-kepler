@@ -6,11 +6,19 @@ export const NAVBAR = {
 
 export const BUTTON = {
   shopNow: "SHOP NOW",
+  wishlist: "ADD TO WISHLIST",
+  cart: "ADD TO CART",
 };
 
 export const CATEGORIES = {
   title: "Your Home, With Love",
   description: "Come, Choose from millions of products",
+  noCategories: "No categories available now. Pls, check again later",
+};
+
+export const PRODUCTS = {
+  quantity: "Quantity :",
+  noProducts: "No products available now. Pls, check again later",
 };
 
 export const PAGE_NOT_FOUND = "This page is not available. Click below button to redirect to home page";

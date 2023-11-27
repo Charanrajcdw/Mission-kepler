@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+
+.card {
+  flex-basis: 23%;
+}
+
+.big-product-card {
+  flex-basis: 31%;
+}
+
+.product-title-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 14px 0 8px;
+}
+
+.product-title-container h5 {
+  font-size: 0.92rem;
+  font-weight: 600;
+  width: 275px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.product-title-container p {
+  font-weight: 500;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.product-quantity {
+  font-size: 0.7rem;
+  margin-bottom: 8px;
+}
+
+.product-description {
+  font-size: 11px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: #4e4e4e;
+}
+
+.product-guarantee {
+  display: flex;
+  align-content: center;
+  font-size: 1.3rem;
+  margin: 13px 0;
+  padding-bottom: 9px;
+  gap: 4px;
+  color: #008800;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.product-guarantee span {
+  font-size: 1rem;
+  transform: scale(1, 1.25);
+}
+
+.product-guarantee p {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.product-buttons {
+  display: flex;
+  justify-content: flex-end;
+}

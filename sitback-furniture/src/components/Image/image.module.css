@@ -7,3 +7,9 @@
 .category-img {
   height: 610px;
 }
+
+.product-img {
+  height: 188px;
+  border-radius: 0px 8px 8px 8px;
+  overflow: hidden;
+}

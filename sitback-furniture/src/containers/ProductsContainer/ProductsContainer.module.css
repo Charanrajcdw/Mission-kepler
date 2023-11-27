@@ -1,0 +1,11 @@
+.products-container {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 43.5px;
+  margin: 45px 48px;
+  width: 100%;
+}
+
+.products-container::-webkit-scrollbar {
+  display: none;
+}
