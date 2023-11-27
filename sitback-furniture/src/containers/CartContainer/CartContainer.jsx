@@ -1,26 +1,67 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CartCard from "../../components/CartCard/CartCard";
 import Button from "../../components/Button/Button";
 import styles from "./CartContainer.module.css";
 import { CART, BUTTON } from "../../constants/constants";
+import { addToCart, removeFromWishlist } from "../../utils/ProductUtils";
 import { transformToIndianRupee } from "../../utils/ProductUtils";
+import { useNavigate } from "react-router-dom";
 
-const CartContainer = ({ activeTab, cartData, wishlistData }) => {
+const CartContainer = ({ activeTab, cartData, wishlistData, resetCart }) => {
   const [activeTabName, setActiveTabName] = useState(activeTab);
-  const [price, setPrice] = useState(transformToIndianRupee("51490"));
+  const [price, setPrice] = useState();
+  const [cartItems, setCartItems] = useState(cartData);
+  const [wishlistItems, setWishlistItems] = useState(wishlistData);
+  const navigate = useNavigate();
 
-  let cartContent = "";
-  if (activeTabName === "cart") {
-    cartContent = cartData.map((product) => <CartCard key={product.id} product={product} isCart={true} />);
-  } else {
-    cartContent = wishlistData.map((product) => <CartCard key={product.id} product={product} isCart={false} />);
-  }
+  const placeOrder = () => {
+    localStorage.setItem(CART.orders, JSON.stringify(cartItems));
+    resetCart();
+    navigate("/confirmOrder");
+  };
+
+  const wishlistToCartAddHandler = (product) => {
+    const modifiedCartItems = addToCart(product, 1);
+    const modifiedWishlistItems = removeFromWishlist(product);
+    setCartItems(modifiedCartItems);
+    setWishlistItems(modifiedWishlistItems);
+    setActiveTabName(CART.cart);
+  };
+
+  const cartTabButtonHandler = (product, quantity) => {
+    const modifiedCartItems = addToCart(product, quantity);
+    setCartItems(modifiedCartItems);
+  };
+
+  const calculateTotalAmount = (cartItems) => {
+    const totalPrice = cartItems.reduce((total, product) => total + parseInt(product.price) * product.quantity, 0);
+    setPrice(transformToIndianRupee(totalPrice));
+  };
 
   const toggleTab = (event) => {
     const tabName = event.target.dataset.tab;
     setActiveTabName(tabName);
   };
+
+  useEffect(() => {
+    setCartItems(cartData);
+    setWishlistItems(wishlistData);
+    setActiveTabName(activeTab);
+  }, [cartData, wishlistData, activeTab]);
+
+  useEffect(() => {
+    calculateTotalAmount(cartItems);
+  }, [cartItems]);
+
+  let cartContent = "";
+  if (activeTabName === CART.cart) {
+    cartContent = cartItems.map((product) => <CartCard key={product.id} product={product} isCart={true} cartBtnHandler={cartTabButtonHandler} />);
+  } else {
+    cartContent = wishlistItems.map((product) => (
+      <CartCard key={product.id} product={product} isCart={false} wishlistBtnHandler={wishlistToCartAddHandler} />
+    ));
+  }
 
   return (
     <aside className={styles["cart-container"]}>
@@ -42,13 +83,13 @@ const CartContainer = ({ activeTab, cartData, wishlistData }) => {
           </p>
         )}
       </div>
-      {activeTabName === CART.cart && cartData.length > 0 && (
+      {activeTabName === CART.cart && cartItems.length > 0 && (
         <div className={styles["cart-footer"]}>
           <div className={styles["order-amount"]}>
             <p className={styles["amount-title"]}>{CART.amount}</p>
             <p>&#8377; {price}</p>
           </div>
-          <Button className="order-btn" clickHandler={() => {}}>
+          <Button className="order-btn" clickHandler={placeOrder}>
             {BUTTON.placeOrder}
           </Button>
         </div>
@@ -61,6 +102,7 @@ CartContainer.propTypes = {
   activeTab: PropTypes.string.isRequired,
   cartData: PropTypes.array,
   wishlistData: PropTypes.array,
+  resetCart: PropTypes.func.isRequired,
 };
 
 export default CartContainer;

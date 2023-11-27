@@ -14,7 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/categories" element={<Home />} />
         <Route path="/categories/:category" element={<Shopping />} />
-        <Route path="/orders" element={<Orders />} />
+        <Route path="/confirmOrder" element={<Orders />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

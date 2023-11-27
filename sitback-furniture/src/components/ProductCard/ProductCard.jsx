@@ -6,7 +6,15 @@ import { IoShieldCheckmarkSharp } from "react-icons/io5";
 import { getGuaranteeMessage, transformToIndianRupee } from "../../utils/ProductUtils";
 import { BUTTON, PRODUCTS } from "../../constants/constants";
 
-const ProductCard = ({ product, isProductsPage, isCartVisible }) => {
+const ProductCard = ({ product, isProductsPage, isCartVisible, addToWishlist, addToCart }) => {
+  const wishlistAddHandler = () => {
+    addToWishlist(product);
+  };
+  
+  const cartAddHandler = () => {
+    addToCart(product, 1);
+  };
+
   return (
     <div className={`${styles.card} ${isProductsPage ? "" : styles["order-card"]} ${isCartVisible ? styles["big-product-card"] : ""}`}>
       <Image src={product.photo} alt={product.name} className="product-img" />
@@ -25,10 +33,10 @@ const ProductCard = ({ product, isProductsPage, isCartVisible }) => {
             <p>{getGuaranteeMessage(product.guarantee)}</p>
           </div>
           <div className={styles["product-buttons"]}>
-            <Button className="wishlist-btn" clickHandler={() => {}}>
+            <Button className="wishlist-btn" clickHandler={wishlistAddHandler}>
               {BUTTON.wishlist}
             </Button>
-            <Button className="cart-btn" clickHandler={() => {}}>
+            <Button className="cart-btn" clickHandler={cartAddHandler}>
               {BUTTON.cart}
             </Button>
           </div>
@@ -42,6 +50,8 @@ ProductCard.propTypes = {
   product: PropTypes.object.isRequired,
   isProductsPage: PropTypes.bool.isRequired,
   isCartVisible: PropTypes.bool,
+  addToWishlist: PropTypes.func.isRequired,
+  addToCart: PropTypes.func.isRequired,
 };
 
 export default ProductCard;

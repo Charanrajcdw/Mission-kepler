@@ -6,7 +6,7 @@ import ProductCard from "../../components/ProductCard/ProductCard";
 import { PRODUCTS } from "../../constants/constants";
 import styles from "./ProductsContainer.module.css";
 
-const ProductsContainer = ({ isCartVisible }) => {
+const ProductsContainer = ({ isCartVisible, addToWishlist, addToCart }) => {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
   const { category } = useParams();
@@ -22,7 +22,14 @@ const ProductsContainer = ({ isCartVisible }) => {
   let productsContent = "";
   if (products.length > 0) {
     productsContent = products.map((product) => (
-      <ProductCard key={product.id} product={product} isProductsPage={true} isCartVisible={isCartVisible} />
+      <ProductCard
+        key={product.id}
+        product={product}
+        isProductsPage={true}
+        isCartVisible={isCartVisible}
+        addToWishlist={addToWishlist}
+        addToCart={addToCart}
+      />
     ));
   } else {
     productsContent = PRODUCTS.noProducts;
@@ -33,6 +40,8 @@ const ProductsContainer = ({ isCartVisible }) => {
 
 ProductsContainer.propTypes = {
   isCartVisible: PropTypes.bool.isRequired,
+  addToWishlist: PropTypes.func.isRequired,
+  addToCart: PropTypes.func.isRequired,
 };
 
 export default ProductsContainer;

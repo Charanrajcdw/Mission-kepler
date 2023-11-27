@@ -35,11 +35,15 @@ export const CART = {
   amount: "TOTAL AMOUNT",
   cart: "cart",
   wishlist: "wishlist",
+  orders: "orders",
   cartTab: "MY CART",
   wishlistTab: "MY WISHLIST",
 };
 
-export const PAGE_NOT_FOUND = "This page is not available. Click below button to redirect to home page";
+export const PAGE_NOT_FOUND = {
+  title: "This page is not available. Click below button to redirect to home page",
+  button: "GO TO HOME",
+};
 
 export const COPYRIGHTS = "COPYRIGHTS 2020";
 
