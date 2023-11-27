@@ -41,7 +41,7 @@ const ProductCard = ({ product, isProductsPage, isCartVisible }) => {
 ProductCard.propTypes = {
   product: PropTypes.object.isRequired,
   isProductsPage: PropTypes.bool.isRequired,
-  isCartVisible: PropTypes.bool.isRequired,
+  isCartVisible: PropTypes.bool,
 };
 
 export default ProductCard;

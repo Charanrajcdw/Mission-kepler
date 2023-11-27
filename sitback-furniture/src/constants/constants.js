@@ -21,6 +21,12 @@ export const PRODUCTS = {
   noProducts: "No products available now. Pls, check again later",
 };
 
+export const ORDERS = {
+  title: 'Order Confirmation',
+  description: 'Thank you for shopping with us. The items will be delivered withing 7 days.',
+  noOrders: 'You have not made any order yet.'
+};
+
 export const PAGE_NOT_FOUND = "This page is not available. Click below button to redirect to home page";
 
 export const COPYRIGHTS = "COPYRIGHTS 2020";

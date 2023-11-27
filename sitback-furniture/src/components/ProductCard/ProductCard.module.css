@@ -8,6 +8,10 @@
   flex-basis: 31%;
 }
 
+.order-card {
+  flex-basis: 24.2%;
+}
+
 .product-title-container {
   display: flex;
   justify-content: space-between;
@@ -55,6 +59,7 @@
 .product-guarantee span {
   font-size: 1rem;
   transform: scale(1, 1.25);
+  z-index: -1;
 }
 
 .product-guarantee p {
