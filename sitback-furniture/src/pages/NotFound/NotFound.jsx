@@ -1,4 +1,4 @@
-import { PAGE_NOT_FOUND } from "../../constants/constants";
+import { PAGE_NOT_FOUND, ROUTES } from "../../constants/constants";
 import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
 import styles from "./NotFound.module.css";
@@ -7,7 +7,7 @@ const NotFound = () => {
   const navigate = useNavigate();
 
   const redirectToHome = () => {
-    navigate("/");
+    navigate(ROUTES.home);
   };
 
   return (

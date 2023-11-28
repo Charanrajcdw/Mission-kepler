@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import { getProducts } from "../../services/furnitures";
 import ProductCard from "../../components/ProductCard/ProductCard";
-import { PRODUCTS } from "../../constants/constants";
+import { PRODUCTS, ROUTES } from "../../constants/constants";
 import Loader from "../../components/Loader/Loader";
 import styles from "./ProductsContainer.module.css";
 
@@ -18,7 +18,7 @@ const ProductsContainer = ({ isCartVisible, addToWishlist, addToCart }) => {
     setIsLoaded(false);
     getProducts(category)
       .then((fetchedProducts) => {
-        fetchedProducts.length > 0 ? setProducts(fetchedProducts) : navigate("/invalidCategory");
+        fetchedProducts.length > 0 ? setProducts(fetchedProducts) : navigate(ROUTES.invalid);
         setIsLoaded(true);
       })
       .catch(() => setProducts([]));

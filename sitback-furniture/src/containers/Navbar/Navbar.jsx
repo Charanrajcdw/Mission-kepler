@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import { NAVBAR } from "../../constants/constants";
+import { NAVBAR, ROUTES } from "../../constants/constants";
 import { FaCaretDown } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { getCategories } from "../../services/furnitures";
@@ -22,7 +22,7 @@ const Navbar = () => {
 
   const navlinkItems = navlinks.map((navlink) => (
     <li key={navlink.id} className={styles.navlink}>
-      <NavLink to={`/categories/${navlink.name.toLowerCase()}`} className={({ isActive }) => (isActive ? styles["navlink-active"] : "")}>
+      <NavLink to={`${NAVBAR.route}${navlink.name.toLowerCase()}`} className={({ isActive }) => (isActive ? styles["navlink-active"] : "")}>
         {navlink.name.toUpperCase()}
       </NavLink>
     </li>
@@ -30,7 +30,7 @@ const Navbar = () => {
 
   return (
     <div className={styles.navbar}>
-      <Link to="/" className={styles.logo}>
+      <Link to={ROUTES.home} className={styles.logo}>
         {NAVBAR.logo}
       </Link>
       <ul className={styles.navlinks}>{navlinkItems}</ul>

@@ -9,8 +9,16 @@ export const getGuaranteeMessage = (guarantee) => {
   return guarantee === 1 ? `1 YEAR GUARANTEE` : `${guarantee} YEARS GUARANTEE`;
 };
 
+export const getItemsFromLocalStorage = (key) => {
+  return JSON.parse(localStorage.getItem(key)) ?? [];
+};
+
+export const setItemsToLocalStorage = (key, items) => {
+  localStorage.setItem(key, JSON.stringify(items));
+};
+
 export const addToCart = (product, quantity) => {
-  const cartItems = JSON.parse(localStorage.getItem(CART.cart)) ?? [];
+  const cartItems = getItemsFromLocalStorage(CART.cart);
   let productIndex = cartItems.findIndex((item) => item.id === product.id);
   if (productIndex >= 0) {
     cartItems[productIndex].quantity += quantity;
@@ -20,23 +28,23 @@ export const addToCart = (product, quantity) => {
   } else {
     cartItems.push({ ...product, quantity: quantity });
   }
-  localStorage.setItem(CART.cart, JSON.stringify(cartItems));
+  setItemsToLocalStorage(CART.cart, cartItems);
   return cartItems;
 };
 
 export const addToWishlist = (product) => {
-  const wishlistItems = JSON.parse(localStorage.getItem(CART.wishlist)) ?? [];
+  const wishlistItems = getItemsFromLocalStorage(CART.wishlist);
   let productIndex = wishlistItems.findIndex((item) => item.id === product.id);
   if (productIndex < 0) {
     wishlistItems.push(product);
   }
-  localStorage.setItem(CART.wishlist, JSON.stringify(wishlistItems));
+  setItemsToLocalStorage(CART.wishlist, wishlistItems);
   return wishlistItems;
 };
 
 export const removeFromWishlist = (product) => {
-  const wishlistItems = JSON.parse(localStorage.getItem(CART.wishlist)) ?? [];
+  const wishlistItems = getItemsFromLocalStorage(CART.wishlist);
   const newWishlistItems = wishlistItems.filter((item) => item.id !== product.id);
-  localStorage.setItem(CART.wishlist, JSON.stringify(newWishlistItems));
+  setItemsToLocalStorage(CART.wishlist, newWishlistItems);
   return newWishlistItems;
 };

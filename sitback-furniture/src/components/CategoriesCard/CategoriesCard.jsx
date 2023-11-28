@@ -3,20 +3,21 @@ import { useNavigate } from "react-router-dom";
 import Button from "../Button/Button";
 import Image from "../Image/Image";
 import styles from "./CategoriesCard.module.css";
-import { BUTTON } from "../../constants/constants";
+import { NAVBAR, BUTTON } from "../../constants/constants";
 
 const CategoriesCard = ({ cardData }) => {
+  const { photo, category, description } = cardData;
   const navigate = useNavigate();
 
   const navigateToCategoryPage = () => {
-    navigate(`/categories/${cardData.id}`);
+    navigate(`${NAVBAR.route}${cardData.id}`);
   };
 
   return (
     <div className={styles["category-card"]}>
-      <Image className="category-img" src={cardData.photo} alt={cardData.category} />
-      <h2 className={styles["category-title"]}>{cardData.category}</h2>
-      <p className={styles["category-description"]}>{cardData.description}</p>
+      <Image className="category-img" src={photo} alt={category} />
+      <h2 className={styles["category-title"]}>{category}</h2>
+      <p className={styles["category-description"]}>{description}</p>
       <Button clickHandler={navigateToCategoryPage} className="category-btn">
         {BUTTON.shopNow}
       </Button>

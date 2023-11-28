@@ -3,24 +3,26 @@ import { useState, useEffect } from "react";
 import CartCard from "../../components/CartCard/CartCard";
 import Button from "../../components/Button/Button";
 import styles from "./CartContainer.module.css";
-import { CART, BUTTON } from "../../constants/constants";
-import { addToCart, removeFromWishlist } from "../../utils/ProductUtils";
+import { CART, BUTTON, ROUTES } from "../../constants/constants";
+import { addToCart, removeFromWishlist, setItemsToLocalStorage } from "../../utils/ProductUtils";
 import { transformToIndianRupee } from "../../utils/ProductUtils";
 import { useNavigate } from "react-router-dom";
 
 const CartContainer = ({ activeTab, cartData, wishlistData, resetCart }) => {
   const [activeTabName, setActiveTabName] = useState(activeTab);
-  const [price, setPrice] = useState();
+  const [price, setPrice] = useState(0);
   const [cartItems, setCartItems] = useState(cartData);
   const [wishlistItems, setWishlistItems] = useState(wishlistData);
   const navigate = useNavigate();
 
+  // move items from cart to orders and redirect to orders page
   const placeOrder = () => {
-    localStorage.setItem(CART.orders, JSON.stringify(cartItems));
+    setItemsToLocalStorage(CART.orders, cartItems);
     resetCart();
-    navigate("/confirmOrder");
+    navigate(ROUTES.order);
   };
 
+  // move item from wishlist to cart
   const wishlistToCartAddHandler = (product) => {
     const modifiedCartItems = addToCart(product, 1);
     const modifiedWishlistItems = removeFromWishlist(product);
@@ -29,16 +31,19 @@ const CartContainer = ({ activeTab, cartData, wishlistData, resetCart }) => {
     setActiveTabName(CART.cart);
   };
 
+  // handle increment and decrement in cart tab
   const cartTabButtonHandler = (product, quantity) => {
     const modifiedCartItems = addToCart(product, quantity);
     setCartItems(modifiedCartItems);
   };
 
+  // calculate price of items in cart
   const calculateTotalAmount = (cartItems) => {
     const totalPrice = cartItems.reduce((total, product) => total + parseInt(product.price) * product.quantity, 0);
     setPrice(transformToIndianRupee(totalPrice));
   };
 
+  // toogle tabs in cart container
   const toggleTab = (event) => {
     const tabName = event.target.dataset.tab;
     setActiveTabName(tabName);

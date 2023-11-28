@@ -7,6 +7,7 @@ import { getGuaranteeMessage, transformToIndianRupee } from "../../utils/Product
 import { BUTTON, PRODUCTS } from "../../constants/constants";
 
 const ProductCard = ({ product, isProductsPage, isCartVisible, addToWishlist, addToCart }) => {
+  const { photo, name, price, quantity, description, guarantee } = product;
   const wishlistAddHandler = () => {
     addToWishlist(product);
   };
@@ -17,20 +18,20 @@ const ProductCard = ({ product, isProductsPage, isCartVisible, addToWishlist, ad
 
   return (
     <div className={`${styles.card} ${isProductsPage ? "" : styles["order-card"]} ${isCartVisible ? styles["big-product-card"] : ""}`}>
-      <Image src={product.photo} alt={product.name} className="product-img" />
+      <Image src={photo} alt={name} className="product-img" />
       <div className={styles["product-title-container"]}>
-        <h5>{product.name}</h5>
-        <p>&#8377; {transformToIndianRupee(product.price)}</p>
+        <h5>{name}</h5>
+        <p>&#8377; {transformToIndianRupee(price)}</p>
       </div>
-      {product.quantity && <p className={styles["product-quantity"]}>{`${PRODUCTS.quantity} ${product.quantity}`}</p>}
-      <p className={styles["product-description"]}>{product.description}</p>
+      {quantity && <p className={styles["product-quantity"]}>{`${PRODUCTS.quantity} ${quantity}`}</p>}
+      <p className={styles["product-description"]}>{description}</p>
       {isProductsPage && (
         <>
           <div className={styles["product-guarantee"]}>
             <span>
               <IoShieldCheckmarkSharp />
             </span>
-            <p>{getGuaranteeMessage(product.guarantee)}</p>
+            <p>{getGuaranteeMessage(guarantee)}</p>
           </div>
           <div className={styles["product-buttons"]}>
             <Button className="wishlist-btn" clickHandler={wishlistAddHandler}>

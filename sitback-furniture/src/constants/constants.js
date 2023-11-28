@@ -1,6 +1,7 @@
 export const NAVBAR = {
   logo: "SITBACK",
   name: "Nijin Vinodan",
+  route: "/categories/",
 };
 
 export const BUTTON = {
@@ -27,6 +28,7 @@ export const ORDERS = {
   title: "Order Confirmation",
   description: "Thank you for shopping with us. The items will be delivered withing 7 days.",
   noOrders: "You have not made any order yet.",
+  orders: "orders",
 };
 
 export const CART = {
@@ -50,4 +52,7 @@ export const ROUTES = {
   API_URL: "https://jsonmockserver.vercel.app/api/shopping/furniture",
   categories: "/categories",
   products: "/products",
+  home: "/",
+  order: "/confirmOrder",
+  invalid: "/invalid",
 };

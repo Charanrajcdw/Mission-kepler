@@ -2,11 +2,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #ffffff;
+  background-color: #fff;
   position: sticky;
   top: 0;
   padding: 22px 46px;
-  box-shadow: 0px 0px 10px 0px #bbbbbb;
+  box-shadow: 0px 0px 10px 0px #bbb;
 }
 
 .logo {
@@ -33,12 +33,12 @@
 
 .navlink:hover a {
   padding-bottom: 16.5px;
-  border-bottom: 10px solid #000000;
+  border-bottom: 10px solid #000;
 }
 
 .navlink-active {
   padding-bottom: 16.5px;
-  border-bottom: 10px solid #000000;
+  border-bottom: 10px solid #000;
 }
 
 .username {

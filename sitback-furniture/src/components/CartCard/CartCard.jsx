@@ -6,6 +6,7 @@ import { transformToIndianRupee } from "../../utils/ProductUtils";
 import styles from "./CartCard.module.css";
 
 const CartCard = ({ product, isCart, wishlistBtnHandler, cartBtnHandler }) => {
+  const { photo, name, price } = product;
   const incrementHandler = () => {
     cartBtnHandler(product, 1);
   };
@@ -20,10 +21,10 @@ const CartCard = ({ product, isCart, wishlistBtnHandler, cartBtnHandler }) => {
 
   return (
     <div className={styles["cart-card"]}>
-      <Image className="cart-img" src={product.photo} alt={product.name} />
+      <Image className="cart-img" src={photo} alt={name} />
       <div className={styles["content-container"]}>
-        <p className={styles["product-name"]}>{product.name}</p>
-        <p className={styles["product-price"]}>&#8377; {transformToIndianRupee(product.price)}</p>
+        <p className={styles["product-name"]}>{name}</p>
+        <p className={styles["product-price"]}>&#8377; {transformToIndianRupee(price)}</p>
       </div>
       {isCart ? (
         <div className={styles["product-buttons"]}>

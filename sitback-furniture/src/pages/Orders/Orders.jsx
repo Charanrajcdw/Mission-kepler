@@ -1,13 +1,11 @@
-import CategoriesContainer from "../../containers/CategoriesContainer/CategoriesContainer";
 import OrdersContainer from "../../containers/OrdersContainer/OrdersContainer";
-import Footer from "../../components/Footer/Footer";
+import Home from "../Home/Home";
 
 const Orders = () => {
   return (
     <>
       <OrdersContainer />
-      <CategoriesContainer />
-      <Footer />
+      <Home/>
     </>
   );
 };

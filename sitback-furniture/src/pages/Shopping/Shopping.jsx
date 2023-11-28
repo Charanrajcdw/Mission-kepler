@@ -1,21 +1,15 @@
 import ProductsContainer from "../../containers/ProductsContainer/ProductsContainer";
 import CartContainer from "../../containers/CartContainer/CartContainer";
 import styles from "./Shopping.module.css";
-import { addToCart, addToWishlist } from "../../utils/ProductUtils";
+import { addToCart, addToWishlist, getItemsFromLocalStorage, setItemsToLocalStorage } from "../../utils/ProductUtils";
 import { CART } from "../../constants/constants";
 import { useState, useEffect } from "react";
 
 const Shopping = () => {
   const [isCartVisible, setIsCartVisible] = useState(false);
   const [activeTab, setActiveTab] = useState(CART.cart);
-  const [cartData, setCartData] = useState(() => {
-    const storedCartData = localStorage.getItem(CART.cart);
-    return JSON.parse(storedCartData) ?? [];
-  });
-  const [wishlistData, setWishlistData] = useState(() => {
-    const storedWishlistData = localStorage.getItem(CART.wishlist);
-    return JSON.parse(storedWishlistData) ?? [];
-  });
+  const [cartData, setCartData] = useState(() => getItemsFromLocalStorage(CART.cart));
+  const [wishlistData, setWishlistData] = useState(() => getItemsFromLocalStorage(CART.wishlist));
 
   const wishlistAddHandler = (product) => {
     const wishlistItems = addToWishlist(product);
@@ -31,7 +25,7 @@ const Shopping = () => {
 
   const cartResetHandler = () => {
     setCartData([]);
-    localStorage.setItem(CART.cart, JSON.stringify([]));
+    setItemsToLocalStorage(CART.cart, []);
   };
 
   useEffect(() => {
