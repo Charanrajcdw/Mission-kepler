@@ -1,13 +1,29 @@
 import { Link, NavLink } from "react-router-dom";
 import { NAVBAR } from "../../constants/constants";
 import { FaCaretDown } from "react-icons/fa";
+import { useState, useEffect } from "react";
+import { getCategories } from "../../services/furnitures";
 import styles from "./Navbar.module.css";
 
 const Navbar = () => {
-  const navlinkItems = NAVBAR.navlinks.map((navlink) => (
-    <li key={navlink} className={styles.navlink}>
-      <NavLink to={`/categories/${navlink}`} className={({ isActive }) => (isActive ? styles["navlink-active"] : "")}>
-        {navlink.toUpperCase()}
+  const [navlinks, setNavlinks] = useState([]);
+
+  useEffect(() => {
+    getCategories()
+      .then((categories) => {
+        setNavlinks(
+          categories.map((category) => {
+            return { id: category.id, name: category.category };
+          })
+        );
+      })
+      .catch(() => setNavlinks([]));
+  }, []);
+
+  const navlinkItems = navlinks.map((navlink) => (
+    <li key={navlink.id} className={styles.navlink}>
+      <NavLink to={`/categories/${navlink.name.toLowerCase()}`} className={({ isActive }) => (isActive ? styles["navlink-active"] : "")}>
+        {navlink.name.toUpperCase()}
       </NavLink>
     </li>
   ));

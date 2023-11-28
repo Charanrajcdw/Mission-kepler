@@ -77,7 +77,7 @@ const CartContainer = ({ activeTab, cartData, wishlistData, resetCart }) => {
         {cartContent.length > 0 ? (
           cartContent
         ) : (
-          <p className={styles["empty-cart-message"]}>
+          <p>
             {CART.emptyCart}
             {activeTabName}
           </p>

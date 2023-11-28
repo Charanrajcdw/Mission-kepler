@@ -1,7 +1,6 @@
 export const NAVBAR = {
   logo: "SITBACK",
   name: "Nijin Vinodan",
-  navlinks: ["couches", "chairs", "dining"],
 };
 
 export const BUTTON = {

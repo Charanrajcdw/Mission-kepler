@@ -1,4 +1,6 @@
 .shopping-container {
   display: flex;
   flex-flow: row nowrap;
+  height: 92vh;
+  overflow: hidden;
 }
