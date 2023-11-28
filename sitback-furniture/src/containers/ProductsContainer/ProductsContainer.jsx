@@ -4,17 +4,22 @@ import PropTypes from "prop-types";
 import { getProducts } from "../../services/furnitures";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import { PRODUCTS } from "../../constants/constants";
+import Loader from "../../components/Loader/Loader";
 import styles from "./ProductsContainer.module.css";
 
 const ProductsContainer = ({ isCartVisible, addToWishlist, addToCart }) => {
   const [products, setProducts] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
   const navigate = useNavigate();
   const { category } = useParams();
 
   useEffect(() => {
+    setProducts([]);
+    setIsLoaded(false);
     getProducts(category)
       .then((fetchedProducts) => {
         fetchedProducts.length > 0 ? setProducts(fetchedProducts) : navigate("/invalidCategory");
+        setIsLoaded(true);
       })
       .catch(() => setProducts([]));
   }, [category, navigate]);
@@ -35,7 +40,7 @@ const ProductsContainer = ({ isCartVisible, addToWishlist, addToCart }) => {
     productsContent = PRODUCTS.noProducts;
   }
 
-  return <main className={styles["products-container"]}>{productsContent}</main>;
+  return isLoaded ? <main className={styles["products-container"]}>{productsContent}</main> : <Loader />;
 };
 
 ProductsContainer.propTypes = {

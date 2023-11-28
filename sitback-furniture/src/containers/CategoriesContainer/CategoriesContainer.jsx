@@ -2,14 +2,19 @@ import { useState, useEffect } from "react";
 import CategoriesCard from "../../components/CategoriesCard/CategoriesCard";
 import { CATEGORIES } from "../../constants/constants";
 import styles from "./CategoriesContainer.module.css";
+import Loader from "../../components/Loader/Loader";
 import { getCategories } from "../../services/furnitures";
 
 const CategoriesContainer = () => {
   const [categoriesData, setCategoriesData] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     getCategories()
-      .then((categories) => setCategoriesData(categories))
+      .then((categories) => {
+        setCategoriesData(categories);
+        setIsLoaded(true);
+      })
       .catch(() => setCategoriesData([]));
   }, []);
 
@@ -24,7 +29,10 @@ const CategoriesContainer = () => {
     <main className={styles["home-container"]}>
       <h2 className={styles.title}>{CATEGORIES.title}</h2>
       <h3 className={styles.description}>{CATEGORIES.description}</h3>
-      <div className={categoriesData.length > 0 ? styles["categories-container"] : styles["categories-container"]}>{categoriesContent}</div>
+      {isLoaded && (
+        <div className={categoriesData.length > 0 ? styles["categories-container"] : styles["no-categories-container"]}>{categoriesContent}</div>
+      )}
+      {!isLoaded && <Loader />}
     </main>
   );
 };
