@@ -1,8 +1,8 @@
-import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
+import styles from "./CategoriesCard.module.css";
 import Button from "../Button/Button";
 import Image from "../Image/Image";
-import styles from "./CategoriesCard.module.css";
 import { NAVBAR, BUTTON } from "../../constants/constants";
 
 const CategoriesCard = ({ cardData }) => {

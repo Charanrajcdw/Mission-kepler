@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import BrokenImage from "../../assets/blank-image.jpeg";
 import styles from "./Image.module.css";
+import BrokenImage from "../../assets/blank-image.jpeg";
 
 const Image = ({ src, alt, className }) => {
   const BrokenImageHandler = (error) => {

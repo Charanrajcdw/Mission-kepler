@@ -1,23 +1,10 @@
-import { useState, useEffect } from "react";
-import CategoriesCard from "../../components/CategoriesCard/CategoriesCard";
-import { CATEGORIES } from "../../constants/constants";
+import PropTypes from "prop-types";
 import styles from "./CategoriesContainer.module.css";
+import CategoriesCard from "../../components/CategoriesCard/CategoriesCard";
 import Loader from "../../components/Loader/Loader";
-import { getCategories } from "../../services/furnitures";
+import { CATEGORIES } from "../../constants/constants";
 
-const CategoriesContainer = () => {
-  const [categoriesData, setCategoriesData] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    getCategories()
-      .then((categories) => {
-        setCategoriesData(categories);
-        setIsLoaded(true);
-      })
-      .catch(() => setCategoriesData([]));
-  }, []);
-
+const CategoriesContainer = ({ categoriesData, isLoaded }) => {
   let categoriesContent = "";
   if (categoriesData.length > 0) {
     categoriesContent = categoriesData.map((category) => <CategoriesCard cardData={category} key={category.id} />);
@@ -35,6 +22,11 @@ const CategoriesContainer = () => {
       {!isLoaded && <Loader />}
     </main>
   );
+};
+
+CategoriesContainer.propTypes = {
+  categoriesData: PropTypes.array.isRequired,
+  isLoaded: PropTypes.bool.isRequired,
 };
 
 export default CategoriesContainer;

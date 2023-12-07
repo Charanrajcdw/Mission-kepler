@@ -1,15 +1,14 @@
-import ProductsContainer from "../../containers/ProductsContainer/ProductsContainer";
-import CartContainer from "../../containers/CartContainer/CartContainer";
+import { useState } from "react";
 import styles from "./Shopping.module.css";
-import { addToCart, addToWishlist, getItemsFromLocalStorage, setItemsToLocalStorage } from "../../utils/ProductUtils";
+import CartContainer from "../../containers/CartContainer/CartContainer";
+import ProductsContainer from "../../containers/ProductsContainer/ProductsContainer";
 import { CART } from "../../constants/constants";
-import { useState, useEffect } from "react";
+import { addToCart, addToWishlist, getItemsFromLocalStorage } from "../../utils/ProductUtils";
 
 const Shopping = () => {
-  const [isCartVisible, setIsCartVisible] = useState(false);
-  const [activeTab, setActiveTab] = useState(CART.cart);
   const [cartData, setCartData] = useState(() => getItemsFromLocalStorage(CART.cart));
   const [wishlistData, setWishlistData] = useState(() => getItemsFromLocalStorage(CART.wishlist));
+  const [activeTab, setActiveTab] = useState(cartData.length > 0 ? CART.cart : wishlistData.length > 0 ? CART.wishlist : null);
 
   const wishlistAddHandler = (product) => {
     const wishlistItems = addToWishlist(product);
@@ -23,19 +22,16 @@ const Shopping = () => {
     setActiveTab(CART.cart);
   };
 
-  const cartResetHandler = () => {
-    setCartData([]);
-    setItemsToLocalStorage(CART.cart, []);
+  const cartVisibilityHandler = () => {
+    setActiveTab(null);
   };
-
-  useEffect(() => {
-    setIsCartVisible(cartData.length > 0 || wishlistData.length > 0);
-  }, [cartData, wishlistData]);
 
   return (
     <div className={styles["shopping-container"]}>
-      <ProductsContainer isCartVisible={isCartVisible} addToWishlist={wishlistAddHandler} addToCart={cartAddHandler} />
-      {isCartVisible && <CartContainer activeTab={activeTab} cartData={cartData} wishlistData={wishlistData} resetCart={cartResetHandler} />}
+      <ProductsContainer isCartVisible={!!activeTab} addToWishlist={wishlistAddHandler} addToCart={cartAddHandler} />
+      {!!activeTab && (
+        <CartContainer activeTab={activeTab} cartData={cartData} wishlistData={wishlistData} cartVisibilityHandler={cartVisibilityHandler} />
+      )}
     </div>
   );
 };

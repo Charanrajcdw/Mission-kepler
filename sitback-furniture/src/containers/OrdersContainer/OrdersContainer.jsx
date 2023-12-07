@@ -1,7 +1,7 @@
-import ProductCard from "../../components/ProductCard/ProductCard";
 import { useEffect } from "react";
-import { ORDERS } from "../../constants/constants";
 import styles from "./OrdersContainer.module.css";
+import ProductCard from "../../components/ProductCard/ProductCard";
+import { ORDERS } from "../../constants/constants";
 import { getItemsFromLocalStorage, setItemsToLocalStorage } from "../../utils/ProductUtils";
 
 const OrdersContainer = () => {

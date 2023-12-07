@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
+import { IoShieldCheckmarkSharp } from "react-icons/io5";
+import styles from "./ProductCard.module.css";
 import Button from "../Button/Button";
 import Image from "../Image/Image";
-import styles from "./ProductCard.module.css";
-import { IoShieldCheckmarkSharp } from "react-icons/io5";
-import { getGuaranteeMessage, transformToIndianRupee } from "../../utils/ProductUtils";
 import { BUTTON, PRODUCTS } from "../../constants/constants";
+import { getGuaranteeMessage, transformToIndianRupee } from "../../utils/ProductUtils";
 
 const ProductCard = ({ product, isProductsPage, isCartVisible, addToWishlist, addToCart }) => {
   const { photo, name, price, quantity, description, guarantee } = product;
@@ -51,8 +51,8 @@ ProductCard.propTypes = {
   product: PropTypes.object.isRequired,
   isProductsPage: PropTypes.bool.isRequired,
   isCartVisible: PropTypes.bool,
-  addToWishlist: PropTypes.func.isRequired,
-  addToCart: PropTypes.func.isRequired,
+  addToWishlist: PropTypes.func,
+  addToCart: PropTypes.func,
 };
 
 export default ProductCard;

@@ -1,5 +1,5 @@
-import { COPYRIGHTS } from "../../constants/constants";
 import styles from "./Footer.module.css";
+import { COPYRIGHTS } from "../../constants/constants";
 
 const Copyrights = () => {
   return (

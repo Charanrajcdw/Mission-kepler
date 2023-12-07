@@ -1,12 +1,12 @@
+import PropTypes from "prop-types";
+import styles from "./CartCard.module.css";
 import Button from "../Button/Button";
 import Image from "../Image/Image";
-import PropTypes from "prop-types";
 import { BUTTON } from "../../constants/constants";
 import { transformToIndianRupee } from "../../utils/ProductUtils";
-import styles from "./CartCard.module.css";
 
 const CartCard = ({ product, isCart, wishlistBtnHandler, cartBtnHandler }) => {
-  const { photo, name, price } = product;
+  const { photo, name, price, quantity } = product;
   const incrementHandler = () => {
     cartBtnHandler(product, 1);
   };
@@ -31,7 +31,7 @@ const CartCard = ({ product, isCart, wishlistBtnHandler, cartBtnHandler }) => {
           <Button className="decrement-btn" clickHandler={decrementHandler}>
             {BUTTON.decrement}
           </Button>
-          <p>{product.quantity}</p>
+          <p>{quantity}</p>
           <Button className="increment-btn" clickHandler={incrementHandler}>
             {BUTTON.increment}
           </Button>

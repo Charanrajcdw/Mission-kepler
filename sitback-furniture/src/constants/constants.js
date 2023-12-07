@@ -1,3 +1,9 @@
+export const APP_ROUTES={
+  categories:"categories",
+  category:":category",
+  order:"confirmOrder",
+}
+
 export const NAVBAR = {
   logo: "SITBACK",
   name: "Nijin Vinodan",

@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
-import { getProducts } from "../../services/furnitures";
-import ProductCard from "../../components/ProductCard/ProductCard";
-import { PRODUCTS, ROUTES } from "../../constants/constants";
-import Loader from "../../components/Loader/Loader";
 import styles from "./ProductsContainer.module.css";
+import Loader from "../../components/Loader/Loader";
+import ProductCard from "../../components/ProductCard/ProductCard";
+import { getProducts } from "../../services/furnitures";
+import { PRODUCTS, ROUTES } from "../../constants/constants";
 
 const ProductsContainer = ({ isCartVisible, addToWishlist, addToCart }) => {
   const [products, setProducts] = useState([]);

@@ -9,6 +9,11 @@ export const getGuaranteeMessage = (guarantee) => {
   return guarantee === 1 ? `1 YEAR GUARANTEE` : `${guarantee} YEARS GUARANTEE`;
 };
 
+export const calculateTotalPrice = (items) => {
+  const price = items.reduce((total, product) => total + parseInt(product.price) * product.quantity, 0);
+  return transformToIndianRupee(price);
+};
+
 export const getItemsFromLocalStorage = (key) => {
   return JSON.parse(localStorage.getItem(key)) ?? [];
 };
@@ -19,7 +24,7 @@ export const setItemsToLocalStorage = (key, items) => {
 
 export const addToCart = (product, quantity) => {
   const cartItems = getItemsFromLocalStorage(CART.cart);
-  let productIndex = cartItems.findIndex((item) => item.id === product.id);
+  const productIndex = cartItems.findIndex((item) => item.id === product.id);
   if (productIndex >= 0) {
     cartItems[productIndex].quantity += quantity;
     if (cartItems[productIndex].quantity === 0) {
@@ -34,7 +39,7 @@ export const addToCart = (product, quantity) => {
 
 export const addToWishlist = (product) => {
   const wishlistItems = getItemsFromLocalStorage(CART.wishlist);
-  let productIndex = wishlistItems.findIndex((item) => item.id === product.id);
+  const productIndex = wishlistItems.findIndex((item) => item.id === product.id);
   if (productIndex < 0) {
     wishlistItems.push(product);
   }

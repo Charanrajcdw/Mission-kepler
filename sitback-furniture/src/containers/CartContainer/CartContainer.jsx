@@ -1,24 +1,23 @@
-import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
+import styles from "./CartContainer.module.css";
 import CartCard from "../../components/CartCard/CartCard";
 import Button from "../../components/Button/Button";
-import styles from "./CartContainer.module.css";
 import { CART, BUTTON, ROUTES } from "../../constants/constants";
-import { addToCart, removeFromWishlist, setItemsToLocalStorage } from "../../utils/ProductUtils";
-import { transformToIndianRupee } from "../../utils/ProductUtils";
-import { useNavigate } from "react-router-dom";
+import { addToCart, calculateTotalPrice, removeFromWishlist, setItemsToLocalStorage } from "../../utils/ProductUtils";
 
-const CartContainer = ({ activeTab, cartData, wishlistData, resetCart }) => {
+const CartContainer = ({ activeTab, cartData, wishlistData, cartVisibilityHandler }) => {
   const [activeTabName, setActiveTabName] = useState(activeTab);
-  const [price, setPrice] = useState(0);
   const [cartItems, setCartItems] = useState(cartData);
   const [wishlistItems, setWishlistItems] = useState(wishlistData);
+  const totalPrice = calculateTotalPrice(cartItems);
   const navigate = useNavigate();
 
   // move items from cart to orders and redirect to orders page
   const placeOrder = () => {
     setItemsToLocalStorage(CART.orders, cartItems);
-    resetCart();
+    setItemsToLocalStorage(CART.cart, []);
     navigate(ROUTES.order);
   };
 
@@ -37,12 +36,6 @@ const CartContainer = ({ activeTab, cartData, wishlistData, resetCart }) => {
     setCartItems(modifiedCartItems);
   };
 
-  // calculate price of items in cart
-  const calculateTotalAmount = (cartItems) => {
-    const totalPrice = cartItems.reduce((total, product) => total + parseInt(product.price) * product.quantity, 0);
-    setPrice(transformToIndianRupee(totalPrice));
-  };
-
   // toogle tabs in cart container
   const toggleTab = (event) => {
     const tabName = event.target.dataset.tab;
@@ -56,8 +49,8 @@ const CartContainer = ({ activeTab, cartData, wishlistData, resetCart }) => {
   }, [cartData, wishlistData, activeTab]);
 
   useEffect(() => {
-    calculateTotalAmount(cartItems);
-  }, [cartItems]);
+    cartItems.length == 0 && wishlistItems.length == 0 && cartVisibilityHandler(false);
+  }, [cartItems, wishlistItems, cartVisibilityHandler]);
 
   let cartContent = "";
   if (activeTabName === CART.cart) {
@@ -92,7 +85,7 @@ const CartContainer = ({ activeTab, cartData, wishlistData, resetCart }) => {
         <div className={styles["cart-footer"]}>
           <div className={styles["order-amount"]}>
             <p className={styles["amount-title"]}>{CART.amount}</p>
-            <p>&#8377; {price}</p>
+            <p>&#8377; {totalPrice}</p>
           </div>
           <Button className="order-btn" clickHandler={placeOrder}>
             {BUTTON.placeOrder}
@@ -107,7 +100,7 @@ CartContainer.propTypes = {
   activeTab: PropTypes.string.isRequired,
   cartData: PropTypes.array,
   wishlistData: PropTypes.array,
-  resetCart: PropTypes.func.isRequired,
+  cartVisibilityHandler: PropTypes.func.isRequired,
 };
 
 export default CartContainer;
