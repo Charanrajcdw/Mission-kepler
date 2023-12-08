@@ -26,6 +26,10 @@
   padding: 0 38px;
 }
 
+.empty-cart {
+  padding: 30px 0;
+}
+
 .cart-content::-webkit-scrollbar {
   display: none;
 }

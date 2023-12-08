@@ -3,35 +3,50 @@ import styles from "./Shopping.module.css";
 import CartContainer from "../../containers/CartContainer/CartContainer";
 import ProductsContainer from "../../containers/ProductsContainer/ProductsContainer";
 import { CART } from "../../constants/constants";
-import { addToCart, addToWishlist, getItemsFromLocalStorage } from "../../utils/ProductUtils";
+import { addToCart, addToWishlist, getItemsFromLocalStorage, removeFromWishlist } from "../../utils/product.utils";
 
 const Shopping = () => {
-  const [cartData, setCartData] = useState(() => getItemsFromLocalStorage(CART.cart));
-  const [wishlistData, setWishlistData] = useState(() => getItemsFromLocalStorage(CART.wishlist));
-  const [activeTab, setActiveTab] = useState(cartData.length > 0 ? CART.cart : wishlistData.length > 0 ? CART.wishlist : null);
+  const storedCartItems = getItemsFromLocalStorage(CART.cart);
+  const storedWishlistItems = getItemsFromLocalStorage(CART.wishlist);
+  const [cartData, setCartData] = useState({
+    cartItems: storedCartItems,
+    wishlistItems: storedWishlistItems,
+    activeTab: storedCartItems.length > 0 ? CART.cart : storedWishlistItems.length > 0 ? CART.wishlist : null,
+  });
 
+  // add to wishlist on click from product card
   const wishlistAddHandler = (product) => {
     const wishlistItems = addToWishlist(product);
-    setWishlistData(wishlistItems);
-    setActiveTab(CART.wishlist);
+    setCartData((prevCartData) => {
+      return { ...prevCartData, wishlistItems: wishlistItems, activeTab: CART.wishlist };
+    });
   };
 
-  const cartAddHandler = (product) => {
-    const cartItems = addToCart(product, 1);
-    setCartData(cartItems);
-    setActiveTab(CART.cart);
+  // add to cart on click from product card, and handle buttons in cart card
+  const cartItemHandler = (product, quantity) => {
+    const cartItems = addToCart(product, quantity);
+    setCartData((prevCartData) => {
+      return {
+        ...prevCartData,
+        cartItems: cartItems,
+        activeTab: cartItems.length > 0 ? CART.cart : prevCartData.wishlistItems.length > 0 ? CART.wishlist : null,
+      };
+    });
   };
 
-  const cartVisibilityHandler = () => {
-    setActiveTab(null);
+  // move item from wishlist to cart
+  const wishlistToCartAddHandler = (product) => {
+    const modifiedCartItems = addToCart(product, 1);
+    const modifiedWishlistItems = removeFromWishlist(product);
+    setCartData(() => {
+      return { cartItems: modifiedCartItems, wishlistItems: modifiedWishlistItems, activeTab: CART.cart };
+    });
   };
 
   return (
     <div className={styles["shopping-container"]}>
-      <ProductsContainer isCartVisible={!!activeTab} addToWishlist={wishlistAddHandler} addToCart={cartAddHandler} />
-      {!!activeTab && (
-        <CartContainer activeTab={activeTab} cartData={cartData} wishlistData={wishlistData} cartVisibilityHandler={cartVisibilityHandler} />
-      )}
+      <ProductsContainer isCartVisible={!!cartData.activeTab} addToWishlist={wishlistAddHandler} addToCart={cartItemHandler} />
+      {!!cartData.activeTab && <CartContainer cartData={cartData} cartItemHandler={cartItemHandler} addWishlistToCart={wishlistToCartAddHandler} />}
     </div>
   );
 };

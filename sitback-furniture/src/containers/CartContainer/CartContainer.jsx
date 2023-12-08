@@ -5,12 +5,11 @@ import styles from "./CartContainer.module.css";
 import CartCard from "../../components/CartCard/CartCard";
 import Button from "../../components/Button/Button";
 import { CART, BUTTON, ROUTES } from "../../constants/constants";
-import { addToCart, calculateTotalPrice, removeFromWishlist, setItemsToLocalStorage } from "../../utils/ProductUtils";
+import { calculateTotalPrice, setItemsToLocalStorage } from "../../utils/product.utils";
 
-const CartContainer = ({ activeTab, cartData, wishlistData, cartVisibilityHandler }) => {
+const CartContainer = ({ cartData, cartItemHandler, addWishlistToCart }) => {
+  const { cartItems, wishlistItems, activeTab } = cartData;
   const [activeTabName, setActiveTabName] = useState(activeTab);
-  const [cartItems, setCartItems] = useState(cartData);
-  const [wishlistItems, setWishlistItems] = useState(wishlistData);
   const totalPrice = calculateTotalPrice(cartItems);
   const navigate = useNavigate();
 
@@ -21,21 +20,6 @@ const CartContainer = ({ activeTab, cartData, wishlistData, cartVisibilityHandle
     navigate(ROUTES.order);
   };
 
-  // move item from wishlist to cart
-  const wishlistToCartAddHandler = (product) => {
-    const modifiedCartItems = addToCart(product, 1);
-    const modifiedWishlistItems = removeFromWishlist(product);
-    setCartItems(modifiedCartItems);
-    setWishlistItems(modifiedWishlistItems);
-    setActiveTabName(CART.cart);
-  };
-
-  // handle increment and decrement in cart tab
-  const cartTabButtonHandler = (product, quantity) => {
-    const modifiedCartItems = addToCart(product, quantity);
-    setCartItems(modifiedCartItems);
-  };
-
   // toogle tabs in cart container
   const toggleTab = (event) => {
     const tabName = event.target.dataset.tab;
@@ -43,21 +27,15 @@ const CartContainer = ({ activeTab, cartData, wishlistData, cartVisibilityHandle
   };
 
   useEffect(() => {
-    setCartItems(cartData);
-    setWishlistItems(wishlistData);
-    setActiveTabName(activeTab);
-  }, [cartData, wishlistData, activeTab]);
-
-  useEffect(() => {
-    cartItems.length == 0 && wishlistItems.length == 0 && cartVisibilityHandler(false);
-  }, [cartItems, wishlistItems, cartVisibilityHandler]);
+    setActiveTabName(cartData.activeTab);
+  }, [cartData]);
 
   let cartContent = "";
   if (activeTabName === CART.cart) {
-    cartContent = cartItems.map((product) => <CartCard key={product.id} product={product} isCart={true} cartBtnHandler={cartTabButtonHandler} />);
+    cartContent = cartItems.map((product) => <CartCard key={product.id} product={product} isCart={true} cartBtnHandler={cartItemHandler} />);
   } else {
     cartContent = wishlistItems.map((product) => (
-      <CartCard key={product.id} product={product} isCart={false} wishlistBtnHandler={wishlistToCartAddHandler} />
+      <CartCard key={product.id} product={product} isCart={false} wishlistBtnHandler={addWishlistToCart} />
     ));
   }
 
@@ -75,7 +53,7 @@ const CartContainer = ({ activeTab, cartData, wishlistData, cartVisibilityHandle
         {cartContent.length > 0 ? (
           cartContent
         ) : (
-          <p>
+          <p className={styles["empty-cart"]}>
             {CART.emptyCart}
             {activeTabName}
           </p>
@@ -97,10 +75,17 @@ const CartContainer = ({ activeTab, cartData, wishlistData, cartVisibilityHandle
 };
 
 CartContainer.propTypes = {
-  activeTab: PropTypes.string.isRequired,
-  cartData: PropTypes.array,
-  wishlistData: PropTypes.array,
-  cartVisibilityHandler: PropTypes.func.isRequired,
+  cartData: PropTypes.object,
+  cartItemHandler: PropTypes.func.isRequired,
+  addWishlistToCart: PropTypes.func.isRequired,
+};
+
+CartContainer.defaultProps = {
+  cartData: {
+    activeTab: CART.cart,
+    cartItems: [],
+    wishlistItems: [],
+  },
 };
 
 export default CartContainer;

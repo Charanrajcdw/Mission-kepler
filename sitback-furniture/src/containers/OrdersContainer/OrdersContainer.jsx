@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import styles from "./OrdersContainer.module.css";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import { ORDERS } from "../../constants/constants";
-import { getItemsFromLocalStorage, setItemsToLocalStorage } from "../../utils/ProductUtils";
+import { getItemsFromLocalStorage, setItemsToLocalStorage } from "../../utils/product.utils";
 
 const OrdersContainer = () => {
   const orders = getItemsFromLocalStorage(ORDERS.orders);

@@ -52,7 +52,7 @@ export const PAGE_NOT_FOUND = {
   button: "GO TO HOME",
 };
 
-export const COPYRIGHTS = "COPYRIGHTS 2020";
+export const COPYRIGHTS = `COPYRIGHTS ${new Date().getFullYear()}`;
 
 export const ROUTES = {
   API_URL: "https://jsonmockserver.vercel.app/api/shopping/furniture",

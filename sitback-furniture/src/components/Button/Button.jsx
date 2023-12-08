@@ -10,8 +10,8 @@ const Button = ({ clickHandler, className, children }) => {
 };
 
 Button.propTypes = {
-  className: PropTypes.string.isRequired,
-  clickHandler: PropTypes.func.isRequired,
+  className: PropTypes.string,
+  clickHandler: PropTypes.func,
   children: PropTypes.string.isRequired,
 };
 

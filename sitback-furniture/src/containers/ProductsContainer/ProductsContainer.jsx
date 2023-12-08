@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import styles from "./ProductsContainer.module.css";
 import Loader from "../../components/Loader/Loader";
 import ProductCard from "../../components/ProductCard/ProductCard";
-import { getProducts } from "../../services/furnitures";
+import { getProducts } from "../../services/furnitures.services";
 import { PRODUCTS, ROUTES } from "../../constants/constants";
 
 const ProductsContainer = ({ isCartVisible, addToWishlist, addToCart }) => {

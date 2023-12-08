@@ -2,10 +2,10 @@ import PropTypes from "prop-types";
 import CategoriesContainer from "../../containers/CategoriesContainer/CategoriesContainer";
 import Footer from "../../components/Footer/Footer";
 
-const Home = ({ categoriesData, isLoaded }) => {
+const Home = ({ categoriesData }) => {
   return (
     <>
-      <CategoriesContainer categoriesData={categoriesData} isLoaded={isLoaded} />
+      <CategoriesContainer categoriesData={categoriesData} />
       <Footer />
     </>
   );
@@ -13,7 +13,6 @@ const Home = ({ categoriesData, isLoaded }) => {
 
 Home.propTypes = {
   categoriesData: PropTypes.array.isRequired,
-  isLoaded: PropTypes.bool.isRequired,
 };
 
 export default Home;

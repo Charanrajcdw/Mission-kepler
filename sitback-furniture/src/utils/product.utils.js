@@ -1,8 +1,8 @@
 import { CART } from "../constants/constants";
 
 export const transformToIndianRupee = (price) => {
-  price = parseInt(price);
-  return price.toLocaleString("en-IN");
+  price = +price;
+  return price ? price.toLocaleString("en-IN", { maximumFractionDigits: 2 }) : 0;
 };
 
 export const getGuaranteeMessage = (guarantee) => {

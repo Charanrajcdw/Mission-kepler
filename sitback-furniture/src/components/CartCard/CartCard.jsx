@@ -3,7 +3,7 @@ import styles from "./CartCard.module.css";
 import Button from "../Button/Button";
 import Image from "../Image/Image";
 import { BUTTON } from "../../constants/constants";
-import { transformToIndianRupee } from "../../utils/ProductUtils";
+import { transformToIndianRupee } from "../../utils/product.utils";
 
 const CartCard = ({ product, isCart, wishlistBtnHandler, cartBtnHandler }) => {
   const { photo, name, price, quantity } = product;

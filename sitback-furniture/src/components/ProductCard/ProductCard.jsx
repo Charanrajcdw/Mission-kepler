@@ -4,10 +4,11 @@ import styles from "./ProductCard.module.css";
 import Button from "../Button/Button";
 import Image from "../Image/Image";
 import { BUTTON, PRODUCTS } from "../../constants/constants";
-import { getGuaranteeMessage, transformToIndianRupee } from "../../utils/ProductUtils";
+import { getGuaranteeMessage, transformToIndianRupee } from "../../utils/product.utils";
 
 const ProductCard = ({ product, isProductsPage, isCartVisible, addToWishlist, addToCart }) => {
   const { photo, name, price, quantity, description, guarantee } = product;
+  const displayPrice = transformToIndianRupee(isProductsPage ? price : price * quantity);
   const wishlistAddHandler = () => {
     addToWishlist(product);
   };
@@ -21,7 +22,7 @@ const ProductCard = ({ product, isProductsPage, isCartVisible, addToWishlist, ad
       <Image src={photo} alt={name} className="product-img" />
       <div className={styles["product-title-container"]}>
         <h5>{name}</h5>
-        <p>&#8377; {transformToIndianRupee(price)}</p>
+        <p>&#8377; {displayPrice}</p>
       </div>
       {quantity && <p className={styles["product-quantity"]}>{`${PRODUCTS.quantity} ${quantity}`}</p>}
       <p className={styles["product-description"]}>{description}</p>

@@ -2,18 +2,17 @@ import PropTypes from "prop-types";
 import OrdersContainer from "../../containers/OrdersContainer/OrdersContainer";
 import Home from "../Home/Home";
 
-const Orders = ({ categoriesData, isLoaded }) => {
+const Orders = ({ categoriesData }) => {
   return (
     <>
       <OrdersContainer />
-      <Home categoriesData={categoriesData} isLoaded={isLoaded} />
+      <Home categoriesData={categoriesData} />
     </>
   );
 };
 
 Orders.propTypes = {
   categoriesData: PropTypes.array.isRequired,
-  isLoaded: PropTypes.bool.isRequired,
 };
 
 export default Orders;
