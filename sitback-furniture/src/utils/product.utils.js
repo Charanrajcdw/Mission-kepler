@@ -1,4 +1,5 @@
-import { CART } from "../constants/constants";
+import { CART, TOAST_MESSAGES } from "../constants/constants";
+import { showSuccessToast, showWarningToast } from "./toast.utils";
 
 export const transformToIndianRupee = (price) => {
   price = +price;
@@ -22,7 +23,7 @@ export const setItemsToLocalStorage = (key, items) => {
   localStorage.setItem(key, JSON.stringify(items));
 };
 
-export const addToCart = (product, quantity) => {
+export const addToCart = (product, quantity, fromProductsContainer) => {
   const cartItems = getItemsFromLocalStorage(CART.cart);
   const productIndex = cartItems.findIndex((item) => item.id === product.id);
   if (productIndex >= 0) {
@@ -34,6 +35,7 @@ export const addToCart = (product, quantity) => {
     cartItems.push({ ...product, quantity: quantity });
   }
   setItemsToLocalStorage(CART.cart, cartItems);
+  fromProductsContainer && showSuccessToast(TOAST_MESSAGES.addToCart);
   return cartItems;
 };
 
@@ -42,6 +44,9 @@ export const addToWishlist = (product) => {
   const productIndex = wishlistItems.findIndex((item) => item.id === product.id);
   if (productIndex < 0) {
     wishlistItems.push(product);
+    showSuccessToast(TOAST_MESSAGES.addToWishlist);
+  } else {
+    showWarningToast(TOAST_MESSAGES.warnInWishlist);
   }
   setItemsToLocalStorage(CART.wishlist, wishlistItems);
   return wishlistItems;

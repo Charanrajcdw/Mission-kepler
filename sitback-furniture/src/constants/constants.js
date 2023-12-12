@@ -1,8 +1,8 @@
-export const APP_ROUTES={
-  categories:"categories",
-  category:":category",
-  order:"confirmOrder",
-}
+export const APP_ROUTES = {
+  categories: "categories",
+  category: ":category",
+  order: "confirmOrder",
+};
 
 export const NAVBAR = {
   logo: "SITBACK",
@@ -61,4 +61,12 @@ export const ROUTES = {
   home: "/",
   order: "/confirmOrder",
   invalid: "/invalid",
+};
+
+export const TOAST_MESSAGES = {
+  addToCart: "Product added to cart!",
+  addToWishlist: "Product added to wishlist!",
+  warnInWishlist: "Product already added to wishlist!",
+  placeOrder: "Order placed successfully!",
+  addToCartFromWishlist: "Product moved to cart from wishlist!",
 };

@@ -5,13 +5,16 @@ import styles from "./Navbar.module.css";
 import { NAVBAR, ROUTES } from "../../constants/constants";
 
 const Navbar = ({ categoriesData }) => {
-  const navlinkItems = categoriesData.map((category) => (
-    <li key={category.id} className={styles.navlink}>
-      <NavLink to={`${NAVBAR.route}${category.category.toLowerCase()}`} className={({ isActive }) => (isActive ? styles["navlink-active"] : "")}>
-        {category.category.toUpperCase()}
-      </NavLink>
-    </li>
-  ));
+  const navlinkItems = categoriesData.map((category) => {
+    const { id, category: name } = category;
+    return (
+      <li key={id} className={styles.navlink}>
+        <NavLink to={`${NAVBAR.route}${name.toLowerCase()}`} className={({ isActive }) => (isActive ? styles["navlink-active"] : "")}>
+          {name.toUpperCase()}
+        </NavLink>
+      </li>
+    );
+  });
 
   return (
     <div className={styles.navbar}>

@@ -2,8 +2,9 @@ import { useState } from "react";
 import styles from "./Shopping.module.css";
 import CartContainer from "../../containers/CartContainer/CartContainer";
 import ProductsContainer from "../../containers/ProductsContainer/ProductsContainer";
-import { CART } from "../../constants/constants";
+import { CART, TOAST_MESSAGES } from "../../constants/constants";
 import { addToCart, addToWishlist, getItemsFromLocalStorage, removeFromWishlist } from "../../utils/product.utils";
+import { showSuccessToast } from "../../utils/toast.utils";
 
 const Shopping = () => {
   const storedCartItems = getItemsFromLocalStorage(CART.cart);
@@ -23,8 +24,8 @@ const Shopping = () => {
   };
 
   // add to cart on click from product card, and handle buttons in cart card
-  const cartItemHandler = (product, quantity) => {
-    const cartItems = addToCart(product, quantity);
+  const cartItemHandler = (product, quantity, fromProductsContainer) => {
+    const cartItems = addToCart(product, quantity, fromProductsContainer);
     setCartData((prevCartData) => {
       return {
         ...prevCartData,
@@ -38,6 +39,7 @@ const Shopping = () => {
   const wishlistToCartAddHandler = (product) => {
     const modifiedCartItems = addToCart(product, 1);
     const modifiedWishlistItems = removeFromWishlist(product);
+    showSuccessToast(TOAST_MESSAGES.addToCartFromWishlist);
     setCartData(() => {
       return { cartItems: modifiedCartItems, wishlistItems: modifiedWishlistItems, activeTab: CART.cart };
     });

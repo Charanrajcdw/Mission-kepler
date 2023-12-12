@@ -4,8 +4,9 @@ import PropTypes from "prop-types";
 import styles from "./CartContainer.module.css";
 import CartCard from "../../components/CartCard/CartCard";
 import Button from "../../components/Button/Button";
-import { CART, BUTTON, ROUTES } from "../../constants/constants";
+import { CART, BUTTON, ROUTES, TOAST_MESSAGES } from "../../constants/constants";
 import { calculateTotalPrice, setItemsToLocalStorage } from "../../utils/product.utils";
+import { showSuccessToast } from "../../utils/toast.utils";
 
 const CartContainer = ({ cartData, cartItemHandler, addWishlistToCart }) => {
   const { cartItems, wishlistItems, activeTab } = cartData;
@@ -18,6 +19,7 @@ const CartContainer = ({ cartData, cartItemHandler, addWishlistToCart }) => {
     setItemsToLocalStorage(CART.orders, cartItems);
     setItemsToLocalStorage(CART.cart, []);
     navigate(ROUTES.order);
+    showSuccessToast(TOAST_MESSAGES.placeOrder);
   };
 
   // toogle tabs in cart container

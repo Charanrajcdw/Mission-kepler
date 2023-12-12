@@ -14,7 +14,7 @@ const ProductCard = ({ product, isProductsPage, isCartVisible, addToWishlist, ad
   };
   
   const cartAddHandler = () => {
-    addToCart(product, 1);
+    addToCart(product, 1, true);
   };
 
   return (
