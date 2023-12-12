@@ -1,5 +1,7 @@
 import { createContext, useState } from "react";
 import PropTypes from "prop-types";
+import { localStorageHelper } from "../utils/localStorage.utils";
+import { USER } from "../constants";
 
 export const UserContext = createContext({
   isUserLoggedIn: false,
@@ -7,7 +9,8 @@ export const UserContext = createContext({
 });
 
 const UserContextProvider = ({ children }) => {
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const { get } = localStorageHelper;
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(!!get(USER.key));
   return <UserContext.Provider value={{ isUserLoggedIn, setIsUserLoggedIn }}>{children}</UserContext.Provider>;
 };
 

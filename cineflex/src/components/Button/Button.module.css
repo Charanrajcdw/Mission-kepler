@@ -1,0 +1,14 @@
+.btn {
+  border: none;
+  color: #fff;
+  background-color: #000;
+  padding: 14px;
+}
+
+.form-btn {
+  font-size: 1.6rem;
+  padding: 22px 0;
+  margin-top: 24px;
+  width: 100%;
+  background: linear-gradient(to right, #f6a622, #ac8813);
+}

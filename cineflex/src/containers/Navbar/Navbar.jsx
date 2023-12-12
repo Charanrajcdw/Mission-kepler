@@ -3,14 +3,17 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import logo from "../../assets/logo.png";
 import { UserContext } from "../../contexts/user.context";
-import { ROUTE_PATHS, PUBLIC_NAVS, PRIVATE_NAVS, NAVBAR } from "../../constants";
+import { ROUTE_PATHS, PUBLIC_NAVS, PRIVATE_NAVS, NAVBAR, USER } from "../../constants";
+import { localStorageHelper } from "../../utils/localStorage.utils";
 
 const Navbar = () => {
   const { isUserLoggedIn, setIsUserLoggedIn } = useContext(UserContext);
+  const { get, remove } = localStorageHelper;
   const navigate = useNavigate();
 
   const handleLogout = () => {
     setIsUserLoggedIn(false);
+    remove(USER.key);
     navigate(ROUTE_PATHS.home);
   };
 
@@ -36,10 +39,13 @@ const Navbar = () => {
         {getNavlinkItems(PUBLIC_NAVS)}
         {isUserLoggedIn && getNavlinkItems(PRIVATE_NAVS)}
       </ul>
-      <p className={styles["login-details"]}>
+      <div className={styles["login-details"]}>
         {isUserLoggedIn ? (
           <>
-            <span>{NAVBAR.greeting}</span>
+            <span>
+              {NAVBAR.greeting}
+              {get(USER.key).user}
+            </span>
             <div className={styles.seperator}></div>
             <span onClick={handleLogout} className={styles.auth}>
               {NAVBAR.logout}
@@ -50,7 +56,7 @@ const Navbar = () => {
             {NAVBAR.login}
           </Link>
         )}
-      </p>
+      </div>
     </div>
   );
 };
