@@ -4,6 +4,7 @@ export const LOGIN_FORM = {
   button: "LOGIN",
   emailValue: "nijin@gmail.com",
   passwordValue: "12345678",
+  errorMessage: "Invalid login credentials!",
 };
 
 export const USER = {

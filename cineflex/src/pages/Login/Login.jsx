@@ -1,7 +1,7 @@
 import styles from "./Login.module.css";
 import sindel from "../../assets/sindel.png";
 import Image from "../../components/Image/Image";
-import LoginForm from "../../containers/LoginForm/LoginForm";
+import LoginForm from "../../components/LoginForm/LoginForm";
 import { LOGIN } from "../../constants";
 
 const Login = () => {

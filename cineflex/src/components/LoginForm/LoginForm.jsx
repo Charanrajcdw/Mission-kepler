@@ -1,8 +1,8 @@
-import { useRef, useContext, useEffect } from "react";
+import { useRef, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LOGIN_FORM, ROUTE_PATHS, USER } from "../../constants";
 import styles from "./LoginForm.module.css";
-import Button from "../../components/Button/Button";
+import Button from "../Button/Button";
 import { localStorageHelper } from "../../utils/localStorage.utils";
 import { UserContext } from "../../contexts/user.context";
 
@@ -10,6 +10,7 @@ const LoginForm = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState("");
   const { get, set } = localStorageHelper;
   const user = get(USER.key);
   const { setIsUserLoggedIn } = useContext(UserContext);
@@ -28,11 +29,14 @@ const LoginForm = () => {
       set(USER.key, { user: USER.name });
       setIsUserLoggedIn(true);
       navigate(ROUTE_PATHS.home);
+    } else {
+      setErrorMessage(LOGIN_FORM.errorMessage);
     }
   };
 
   return (
     <form onSubmit={submitHandler}>
+      <div className={styles["error-message"]}>{errorMessage}</div>
       <div className={styles["input-group"]}>
         <label htmlFor={LOGIN_FORM.email} className={styles["input-label"]}>
           {LOGIN_FORM.email}
