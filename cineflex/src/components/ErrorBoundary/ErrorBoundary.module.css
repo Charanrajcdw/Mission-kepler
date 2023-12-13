@@ -1,0 +1,7 @@
+.error-container {
+  text-align: center;
+  font-size: 1.6rem;
+  width: 100%;
+  padding: 20px 0;
+  background: linear-gradient(to right, #dcc031, #b78c16);
+}

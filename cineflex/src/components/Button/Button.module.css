@@ -3,12 +3,19 @@
   color: #fff;
   background-color: #000;
   padding: 14px;
+  font-size: 1.6rem;
 }
 
 .form-btn {
-  font-size: 1.6rem;
   padding: 22px 0;
   margin-top: 24px;
   width: 100%;
   background: linear-gradient(to right, #f6a622, #ac8813);
+}
+
+.lottery-btn {
+  background-color: #d0011c;
+  padding: 14px 38px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
 }

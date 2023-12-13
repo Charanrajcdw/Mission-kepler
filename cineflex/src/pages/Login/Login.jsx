@@ -7,7 +7,7 @@ import { LOGIN } from "../../constants";
 const Login = () => {
   return (
     <div className={styles["login-page-container"]}>
-      <Image src={sindel} alt="cover-image" />
+      <Image src={sindel} alt="banner-image" className="banner-img" />
       <div className={styles["login-form-container"]}>
         <h2 className={styles["form-title"]}>{LOGIN.title}</h2>
         <p className={styles["form-description"]}>{LOGIN.description}</p>

@@ -1,0 +1,26 @@
+.lottery-container {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px 0;
+  gap: 28px;
+  background: linear-gradient(to right, #dcc031, #b78c16);
+}
+
+.lottery-msg {
+  font-size: 1.9rem;
+  margin-left: 48px;
+}
+
+.lottery-input {
+  width: 23.5%;
+  font-size: 1rem;
+  padding: 20px;
+  border: none;
+}
+
+.lottery-input:focus {
+  outline: none;
+}
