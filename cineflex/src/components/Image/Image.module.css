@@ -1,4 +1,9 @@
-.banner-img img{
+.banner-img img {
   height: 84vh;
   object-position: top;
+}
+
+.trailer-img {
+  height: 420px;
+  width: 32%;
 }

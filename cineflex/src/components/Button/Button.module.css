@@ -19,3 +19,8 @@
   font-family: "Roboto", sans-serif;
   font-weight: 300;
 }
+
+.trailer-btn {
+  padding: 20px 38px;
+  background: linear-gradient(to right, #f6a622, #ac8813);
+}
