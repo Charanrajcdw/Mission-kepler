@@ -1,5 +1,6 @@
 import sindel from "../../assets/sindel.png";
 import Lottery from "../../containers/Lottery/Lottery";
+import ShortTeasers from "../../containers/ShortTeasers/ShortTeasers";
 import Image from "../../components/Image/Image";
 import Trailer from "../../components/Trailer/Trailer";
 import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
@@ -13,6 +14,7 @@ const Home = () => {
         <Lottery />
       </ErrorBoundary>
       <Trailer />
+      <ShortTeasers />
       <OtherLanguages />
     </>
   );

@@ -26,3 +26,7 @@ export const OTHER_LANGUAGES = {
   title: "View in Other Languages",
   languagesList: ["E", "ह", "த", "മ", "తె"],
 };
+
+export const TEASER_CARD = {
+  videoWarning: "Your browser does not support the video tag.",
+};

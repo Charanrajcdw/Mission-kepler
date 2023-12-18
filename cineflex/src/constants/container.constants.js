@@ -17,3 +17,8 @@ export const LOTTERY = {
   unluckyMessage: "Sorry :( Better Luck Next Time",
   luckyMessage: "Hurray! You won a free ticket to Blind date on Wednesday",
 };
+
+export const SHORT_TEASERS = {
+  title: "Short Teasers",
+  noTeasers: "More teasers coming soon!!!",
+};
