@@ -29,4 +29,8 @@ export const OTHER_LANGUAGES = {
 
 export const TEASER_CARD = {
   videoWarning: "Your browser does not support the video tag.",
+  contentTime: 5,
+  adTime: 2,
+  videoContent: "Advertisement in ",
+  adContent: "Video Resumes in ",
 };

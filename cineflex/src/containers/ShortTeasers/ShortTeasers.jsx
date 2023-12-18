@@ -21,9 +21,7 @@ const ShortTeasers = () => {
   const getTeaserContent = () => {
     let teaserContent = "";
     if (teasers.length > 0) {
-      teaserContent = teasers.map((teaser) => {
-        return <TeaserCard key={teaser.title} teaser={teaser} />;
-      });
+      teaserContent = teasers.map((teaser) => <TeaserCard key={teaser.title} title={teaser.title} videoSrc={teaser.videoSrc} />);
     } else {
       teaserContent = SHORT_TEASERS.noTeasers;
     }
