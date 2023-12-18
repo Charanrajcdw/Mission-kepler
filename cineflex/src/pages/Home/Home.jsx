@@ -3,6 +3,7 @@ import Lottery from "../../containers/Lottery/Lottery";
 import Image from "../../components/Image/Image";
 import Trailer from "../../components/Trailer/Trailer";
 import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
+import OtherLanguages from "../../components/OtherLanguages/OtherLanguages";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
         <Lottery />
       </ErrorBoundary>
       <Trailer />
+      <OtherLanguages />
     </>
   );
 };

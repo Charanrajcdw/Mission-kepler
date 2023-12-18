@@ -21,3 +21,8 @@ export const TRAILER = {
   go to when that friendship is taken from her. Sintel is created by Blender in 2010 as a pet project to demonstrate Blender capabilities.`,
   button: "WATCH NOW",
 };
+
+export const OTHER_LANGUAGES = {
+  title: "View in Other Languages",
+  languagesList: ["E", "ह", "த", "മ", "తె"],
+};

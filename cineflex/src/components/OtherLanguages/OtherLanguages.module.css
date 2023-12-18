@@ -1,0 +1,27 @@
+.other-languages-container {
+  margin: 2% 0 6%;
+  padding: 0 9.25%;
+}
+
+.languages-title {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+}
+
+.language-list-container {
+  display: flex;
+  gap: 8px;
+}
+
+.language-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 65px;
+  height: 65px;
+  color: #4176b8;
+  border: 1.5px solid #4176b8;
+  font-size: 34px;
+  font-weight: 700;
+  cursor: pointer;
+}
