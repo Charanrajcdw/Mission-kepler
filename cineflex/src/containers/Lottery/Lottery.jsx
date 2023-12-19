@@ -10,6 +10,10 @@ const Lottery = () => {
   const [error, setError] = useState();
   if (error) throw new Error(error);
 
+  const handleKeyUp = () => {
+    lotteryRef.current.value = lotteryRef.current.value.replace(/[^0-9]/g, "");
+  };
+
   const handleClick = () => {
     const enteredNo = lotteryRef.current.value;
     const lotteryResult = checkLotteryNo(enteredNo);
@@ -22,8 +26,14 @@ const Lottery = () => {
       <p className={styles["lottery-msg"]}>{lucky ? LOTTERY.luckyMessage : LOTTERY.message}</p>
       {!lucky && (
         <>
-          <input type="tel" ref={lotteryRef} placeholder={LOTTERY.placeholder} className={styles["lottery-input"]} />
-          <Button className="lottery-btn" clickHandler={handleClick}>
+          <input
+            type="tel"
+            ref={lotteryRef}
+            placeholder={LOTTERY.placeholder}
+            className={styles["lottery-input"]}
+            onKeyUp={handleKeyUp}
+          />
+          <Button className="lottery-btn" clickHandler={handleClick} disabled>
             {LOTTERY.button}
           </Button>
         </>

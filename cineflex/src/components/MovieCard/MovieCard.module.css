@@ -1,0 +1,29 @@
+.movie-card {
+  margin-bottom: 44px;
+}
+
+.movie-title {
+  font-size: 1.45rem;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  margin-bottom: 6px;
+}
+
+.movie-likes {
+  font-size: 1.05rem;
+  font-weight: 300;
+}
+
+.movie-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.like-icon {
+  cursor: pointer;
+}
+
+.like-icon:hover {
+  color: #ff0000;
+}

@@ -34,3 +34,7 @@ export const TEASER_CARD = {
   videoContent: "Advertisement in ",
   adContent: "Video Resumes in ",
 };
+
+export const MOVIE_CARDS = {
+  likes: " Likes",
+};

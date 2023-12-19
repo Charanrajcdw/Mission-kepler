@@ -63,7 +63,7 @@ const TeaserCard = ({ title, videoSrc, timer, message, showAd, showNotification,
   return (
     <div className={styles["teaser-card"]}>
       <div className={styles["video-container"]} onClick={togglePlay}>
-        {showAd && <Image className="teaser-img" src={memoizedAd} alt={title} />}
+        {showAd && <Image className="teaser-img" src={memoizedAd} alt="ad" />}
         <video className={styles["teaser-video"]} poster={sindel} ref={videoRef} onPlay={playHandler} onPause={pauseHandler}>
           <source src={videoSrc} type="video/mp4" />
           {TEASER_CARD.videoWarning}

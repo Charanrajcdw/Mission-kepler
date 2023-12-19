@@ -6,6 +6,10 @@
   font-size: 1.6rem;
 }
 
+.btn:hover {
+  box-shadow: 0 0 12px #fff;
+}
+
 .form-btn {
   padding: 22px 0;
   margin-top: 24px;

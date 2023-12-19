@@ -13,3 +13,23 @@
   height: 100%;
   width: 100%;
 }
+
+.movie-img {
+  height: 17rem;
+  margin-bottom: 12px;
+}
+
+.movie-details-img {
+  height: 13.5rem;
+  width: 30%;
+  margin-bottom: 28px;
+}
+
+.ad-img {
+  width: 100%;
+  height: 72vh;
+}
+
+.ad-img img{
+  object-fit: fill;
+}

@@ -1,0 +1,21 @@
+.movies-list-container {
+  width: 47%;
+  height: 80vh;
+  overflow: auto;
+}
+
+.movies-list-container::-webkit-scrollbar {
+  display: none;
+}
+
+.movie-list-title {
+  font-size: 2.6rem;
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+
+.movies-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, calc(100% / 3 - 28px));
+  justify-content: space-between;
+}
