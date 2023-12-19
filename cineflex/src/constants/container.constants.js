@@ -33,8 +33,9 @@ export const MOVIES_LIST = {
 export const MOVIE_DETAILS = {
   likes: " Likes",
   displayContent: "Advertisement in ",
-  adContent: "Resumes in",
+  adContent: "Resumes in ",
   displayTime: 15,
   adTime: 5,
   actors: "ACTORS",
+  noMovie: "Movie is coming soon!!!",
 };

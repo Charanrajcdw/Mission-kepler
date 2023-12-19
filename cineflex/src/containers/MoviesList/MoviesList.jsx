@@ -23,7 +23,7 @@ const MoviesList = ({ movies }) => {
     let moviesContent = "";
     if (movies.length > 0) {
       moviesContent = movies.map((movie, index) => {
-        if (index < moviesToShow) return <MovieCard key={movie.id} {...movie} />;
+        if (index < moviesToShow) return <MovieCard key={movie.id} movieData={movie} index={index} />;
       });
     } else {
       moviesContent = MOVIES_LIST.noMovies;

@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useContext } from "react";
 import PropTypes from "prop-types";
 import { FaThumbsUp } from "react-icons/fa";
 import styles from "./MovieDetails.module.css";
@@ -6,10 +6,16 @@ import Image from "../../components/Image/Image";
 import withAdvertisement from "../../components/HOC/withAdvertisement";
 import { MOVIE_DETAILS } from "../../constants";
 import { getFormattedTime, getRandomLargeAd } from "../../utils/ad.utils";
+import { MovieContext } from "../../contexts/movie.context";
 
 const MovieDetails = ({ currentMovie, timer, message, isAdPlayed, showAd, showNotification, displayHandler, stopAd }) => {
   const memoizedAd = useMemo(() => getRandomLargeAd(), []);
-  const { link, movie, likes, description, actors } = currentMovie;
+  const { link, movie, likes, description, actors, id, isLiked } = currentMovie;
+  const { updateMovies } = useContext(MovieContext);
+
+  const iconClickHandler = () => {
+    updateMovies(id);
+  };
 
   useEffect(() => {
     let interval;
@@ -44,6 +50,10 @@ const MovieDetails = ({ currentMovie, timer, message, isAdPlayed, showAd, showNo
     };
   }, [timer]);
 
+  if (Object.keys(currentMovie).length === 0) {
+    return <p className={styles["no-movie"]}>{MOVIE_DETAILS.noMovie}</p>;
+  }
+
   return (
     <div className={styles["movie-details-container"]}>
       {showAd ? (
@@ -53,9 +63,9 @@ const MovieDetails = ({ currentMovie, timer, message, isAdPlayed, showAd, showNo
           <div className={styles["movie-details-header"]}>
             <div>
               <h2 className={styles["movie-title"]}>{movie}</h2>
-              <p className={styles["movie-likes"]}>{likes?.concat(MOVIE_DETAILS.likes)}</p>
+              <p className={styles["movie-likes"]}>{likes.toString().concat(MOVIE_DETAILS.likes)}</p>
             </div>
-            <div className={styles["like-container"]}>
+            <div className={`${styles["like-container"]} ${isLiked && styles["liked-icon"]}`} onClick={iconClickHandler}>
               <FaThumbsUp />
             </div>
           </div>
@@ -69,7 +79,7 @@ const MovieDetails = ({ currentMovie, timer, message, isAdPlayed, showAd, showNo
           ))}
         </>
       )}
-      {showNotification && <p className={styles["ad-description"]}>{MOVIE_DETAILS.displayContent.concat(getFormattedTime(timer))}</p>}
+      {showNotification && <p className={styles["ad-description"]}>{message.concat(getFormattedTime(timer))}</p>}
     </div>
   );
 };

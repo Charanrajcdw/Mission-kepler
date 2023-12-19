@@ -1,11 +1,5 @@
 .movies-list-container {
   width: 47%;
-  height: 80vh;
-  overflow: auto;
-}
-
-.movies-list-container::-webkit-scrollbar {
-  display: none;
 }
 
 .movie-list-title {

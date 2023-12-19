@@ -1,28 +1,42 @@
+import { useContext } from "react";
 import PropTypes from "prop-types";
 import { FaThumbsUp } from "react-icons/fa";
 import styles from "./MovieCard.module.css";
 import Image from "../Image/Image";
 import { MOVIE_CARDS } from "../../constants/component.constants";
+import { MovieContext } from "../../contexts/movie.context";
 
-const MovieCard = ({ link, movie, likes }) => {
+const MovieCard = ({ movieData, index }) => {
+  const { link, movie, likes, id, isLiked } = movieData;
+  const { setMovies, updateMovies } = useContext(MovieContext);
+
+  const imageClickHandler = () => {
+    setMovies((prevData) => {
+      return { ...prevData, currentMovieIndex: index };
+    });
+  };
+
+  const iconClickHandler = () => {
+    updateMovies(id);
+  };
+
   return (
     <div className={styles["movie-card"]}>
-      <Image className="movie-img" src={link} alt={movie} />
+      <Image className="movie-img" src={link} alt={movie} clickHandler={imageClickHandler} />
       <div className={styles["movie-details"]}>
         <div>
           <p className={styles["movie-title"]}>{movie}</p>
-          <p className={styles["movie-likes"]}>{likes.concat(MOVIE_CARDS.likes)}</p>
+          <p className={styles["movie-likes"]}>{likes.toString().concat(MOVIE_CARDS.likes)}</p>
         </div>
-        <FaThumbsUp className={styles["like-icon"]} />
+        <FaThumbsUp className={`${styles["like-icon"]} ${isLiked && styles["liked-icon"]}`} onClick={iconClickHandler} />
       </div>
     </div>
   );
 };
 
 MovieCard.propTypes = {
-  link: PropTypes.string.isRequired,
-  movie: PropTypes.string.isRequired,
-  likes: PropTypes.string.isRequired,
+  movieData: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default MovieCard;

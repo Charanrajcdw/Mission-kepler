@@ -10,12 +10,12 @@ const Navbar = () => {
   const location = useLocation();
   const isLoginPage = location.pathname === ROUTE_PATHS.login;
   const { isUserLoggedIn, setIsUserLoggedIn } = useContext(UserContext);
-  const { get, remove } = localStorageHelper;
+  const { get, clear } = localStorageHelper;
   const navigate = useNavigate();
 
   const handleLogout = () => {
     setIsUserLoggedIn(false);
-    remove(USER.key);
+    clear();
     navigate(ROUTE_PATHS.home);
   };
 

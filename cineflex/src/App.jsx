@@ -8,22 +8,25 @@ import NotFound from "./pages/NotFound/NotFound";
 import Navbar from "./containers/Navbar/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import UserContextProvider from "./contexts/user.context";
+import MovieContextProvider from "./contexts/movie.context";
 import { ROUTE_PATHS } from "./constants";
 
 const App = () => {
   return (
     <BrowserRouter>
       <UserContextProvider>
-        <Navbar />
-        <Routes>
-          <Route path={ROUTE_PATHS.home} element={<Home />} />
-          <Route path={ROUTE_PATHS.login} element={<Login />} />
-          <Route path={ROUTE_PATHS.allMovies} element={<AllMovies />} />
-          <Route path={ROUTE_PATHS.home} element={<ProtectedRoute />}>
-            <Route path={ROUTE_PATHS.showTime} element={<NowShowing />} />
-          </Route>
-          <Route path="*" element={<NotFound />}></Route>
-        </Routes>
+        <MovieContextProvider>
+          <Navbar />
+          <Routes>
+            <Route path={ROUTE_PATHS.home} element={<Home />} />
+            <Route path={ROUTE_PATHS.login} element={<Login />} />
+            <Route path={ROUTE_PATHS.allMovies} element={<AllMovies />} />
+            <Route path={ROUTE_PATHS.home} element={<ProtectedRoute />}>
+              <Route path={ROUTE_PATHS.showTime} element={<NowShowing />} />
+            </Route>
+            <Route path="*" element={<NotFound />}></Route>
+          </Routes>
+        </MovieContextProvider>
       </UserContextProvider>
     </BrowserRouter>
   );

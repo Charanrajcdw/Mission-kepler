@@ -7,11 +7,6 @@ export const LOGIN_FORM = {
   errorMessage: "Invalid login credentials!",
 };
 
-export const USER = {
-  key: "user",
-  name: "Nijin",
-};
-
 export const TRAILER = {
   title: "Trailers",
   signInMsg: "You need to sign in to view Trailers.",
