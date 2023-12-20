@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useState, useContext, useCallback } from "react";
 import PropTypes from "prop-types";
 import styles from "./MoviesList.module.css";
 import Button from "../../components/Button/Button";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import { MOVIES_LIST } from "../../constants/container.constants";
+import { MovieContext } from "../../contexts/movie.context";
 
 const MoviesList = ({ movies }) => {
   const [moviesToShow, setMoviesToShow] = useState(MOVIES_LIST.moviesToShow);
+  const { setMovies, updateMovies } = useContext(MovieContext);
   const totalMovies = movies.length;
 
   const handleClick = (event) => {
@@ -19,11 +21,22 @@ const MoviesList = ({ movies }) => {
     }
   };
 
+  const movieHandler = useCallback((index) => {
+    setMovies((prevData) => {
+      return { ...prevData, currentMovieIndex: index };
+    });
+  }, []);
+
+  const likeHandler = useCallback((id) => {
+    updateMovies(id);
+  }, []);
+
   const getMoviesContent = () => {
     let moviesContent = "";
     if (movies.length > 0) {
       moviesContent = movies.map((movie, index) => {
-        if (index < moviesToShow) return <MovieCard key={movie.id} movieData={movie} index={index} />;
+        if (index < moviesToShow)
+          return <MovieCard key={movie.id} movieData={movie} index={index} movieHandler={movieHandler} likeHandler={likeHandler} />;
       });
     } else {
       moviesContent = MOVIES_LIST.noMovies;

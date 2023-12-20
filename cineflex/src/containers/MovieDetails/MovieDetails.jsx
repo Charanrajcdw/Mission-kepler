@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useContext } from "react";
+import { useEffect, useMemo, useContext, useState } from "react";
 import PropTypes from "prop-types";
 import { FaThumbsUp } from "react-icons/fa";
 import styles from "./MovieDetails.module.css";
@@ -8,10 +8,11 @@ import { MOVIE_DETAILS } from "../../constants";
 import { getFormattedTime, getRandomLargeAd } from "../../utils/ad.utils";
 import { MovieContext } from "../../contexts/movie.context";
 
-const MovieDetails = ({ currentMovie, timer, message, isAdPlayed, showAd, showNotification, displayHandler, stopAd }) => {
+const MovieDetails = ({ timer, message, showAd, showNotification, displayHandler, stopAd }) => {
   const memoizedAd = useMemo(() => getRandomLargeAd(), []);
+  const { movies, updateMovies } = useContext(MovieContext);
+  const [currentMovie, setCurrentMovie] = useState({});
   const { link, movie, likes, description, actors, id, isLiked } = currentMovie;
-  const { updateMovies } = useContext(MovieContext);
 
   const iconClickHandler = () => {
     updateMovies(id);
@@ -20,8 +21,10 @@ const MovieDetails = ({ currentMovie, timer, message, isAdPlayed, showAd, showNo
   useEffect(() => {
     let interval;
 
-    // start timer
-    if (timer == 0 && message == "" && !isAdPlayed) {
+    // restart timer if component changes
+    if (currentMovie.id !== movies.data[movies.currentMovieIndex].id) {
+      setCurrentMovie(movies.data[movies.currentMovieIndex]);
+      stopAd();
       displayHandler(MOVIE_DETAILS.displayTime, MOVIE_DETAILS.displayContent, false);
     }
     // run remaining time for ad
@@ -48,9 +51,9 @@ const MovieDetails = ({ currentMovie, timer, message, isAdPlayed, showAd, showNo
     return () => {
       clearInterval(interval);
     };
-  }, [timer]);
+  }, [currentMovie?.id, timer]);
 
-  if (Object.keys(currentMovie).length === 0) {
+  if (movies.currentMovieIndex === -1) {
     return <p className={styles["no-movie"]}>{MOVIE_DETAILS.noMovie}</p>;
   }
 
@@ -63,7 +66,7 @@ const MovieDetails = ({ currentMovie, timer, message, isAdPlayed, showAd, showNo
           <div className={styles["movie-details-header"]}>
             <div>
               <h2 className={styles["movie-title"]}>{movie}</h2>
-              <p className={styles["movie-likes"]}>{likes.toString().concat(MOVIE_DETAILS.likes)}</p>
+              <p className={styles["movie-likes"]}>{likes?.toString().concat(MOVIE_DETAILS.likes)}</p>
             </div>
             <div className={`${styles["like-container"]} ${isLiked && styles["liked-icon"]}`} onClick={iconClickHandler}>
               <FaThumbsUp />
@@ -85,12 +88,10 @@ const MovieDetails = ({ currentMovie, timer, message, isAdPlayed, showAd, showNo
 };
 
 MovieDetails.propTypes = {
-  currentMovie: PropTypes.object,
   timer: PropTypes.number,
   message: PropTypes.string,
   showAd: PropTypes.bool,
   showNotification: PropTypes.bool,
-  isAdPlayed: PropTypes.bool,
   displayHandler: PropTypes.func,
   stopAd: PropTypes.func,
 };

@@ -20,9 +20,9 @@ const MovieContextProvider = ({ children }) => {
     if (isUserLoggedIn) {
       setMovies((oldData) => {
         const updateMovies = oldData.data.map((movie) => {
-          if (id == movie.id && !movie.isLiked) {
+          if (id == movie.id) {
             storeLikedMovie(id);
-            return { ...movie, likes: +movie.likes + 1, isLiked: true };
+            return movie.isLiked ? { ...movie, likes: +movie.likes - 1, isLiked: false } : { ...movie, likes: +movie.likes + 1, isLiked: true };
           } else {
             return movie;
           }
@@ -33,7 +33,7 @@ const MovieContextProvider = ({ children }) => {
       navigate(ROUTE_PATHS.login);
     }
   };
-  
+
   return <MovieContext.Provider value={{ movies, setMovies, updateMovies }}>{children}</MovieContext.Provider>;
 };
 

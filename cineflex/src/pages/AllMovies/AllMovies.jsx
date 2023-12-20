@@ -37,7 +37,7 @@ const AllMovies = () => {
   return (
     <div className={styles["all-movies-container"]}>
       <MoviesList movies={movies.data} />
-      <MovieDetails currentMovie={movies.data[movies.currentMovieIndex]} />
+      <MovieDetails />
     </div>
   );
 };

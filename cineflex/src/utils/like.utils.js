@@ -5,6 +5,8 @@ const { get, set } = localStorageHelper;
 
 export const storeLikedMovie = (id) => {
   const likedMovies = get(LIKES.key) ?? [];
-  if (!likedMovies.includes(id)) likedMovies.push(id);
+  const movieIndex = likedMovies.indexOf(id);
+  if (movieIndex === -1) likedMovies.push(id);
+  else likedMovies.splice(movieIndex, 1);
   set(LIKES.key, likedMovies);
 };

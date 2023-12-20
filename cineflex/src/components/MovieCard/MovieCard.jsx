@@ -1,25 +1,22 @@
-import { useContext } from "react";
+import { memo } from "react";
 import PropTypes from "prop-types";
 import { FaThumbsUp } from "react-icons/fa";
 import styles from "./MovieCard.module.css";
 import Image from "../Image/Image";
 import { MOVIE_CARDS } from "../../constants/component.constants";
-import { MovieContext } from "../../contexts/movie.context";
 
-const MovieCard = ({ movieData, index }) => {
+const MovieCard = ({ movieData, index, movieHandler, likeHandler }) => {
   const { link, movie, likes, id, isLiked } = movieData;
-  const { setMovies, updateMovies } = useContext(MovieContext);
 
   const imageClickHandler = () => {
-    setMovies((prevData) => {
-      return { ...prevData, currentMovieIndex: index };
-    });
+    movieHandler(index);
   };
 
   const iconClickHandler = () => {
-    updateMovies(id);
+    likeHandler(id);
   };
 
+  console.log("movie card",id);
   return (
     <div className={styles["movie-card"]}>
       <Image className="movie-img" src={link} alt={movie} clickHandler={imageClickHandler} />
@@ -37,6 +34,8 @@ const MovieCard = ({ movieData, index }) => {
 MovieCard.propTypes = {
   movieData: PropTypes.object.isRequired,
   index: PropTypes.number.isRequired,
+  movieHandler: PropTypes.func,
+  likeHandler: PropTypes.func,
 };
 
-export default MovieCard;
+export default memo(MovieCard);
