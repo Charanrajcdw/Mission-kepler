@@ -24,6 +24,15 @@
   font-weight: 300;
 }
 
+.lottery-btn:disabled {
+  background-color: #f08487;
+}
+
+.lottery-btn:disabled:hover {
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
 .trailer-btn {
   padding: 20px 38px;
   background: linear-gradient(to right, #f6a622, #ac8813);

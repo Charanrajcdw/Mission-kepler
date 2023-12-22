@@ -12,7 +12,7 @@ const MovieDetails = ({ timer, message, showAd, showNotification, displayHandler
   const memoizedAd = useMemo(() => getRandomLargeAd(), []);
   const { movies, updateMovies } = useContext(MovieContext);
   const [currentMovie, setCurrentMovie] = useState({});
-  const { link, movie, likes, description, actors, id, isLiked } = currentMovie;
+  const { link, movie, likes, description, actors, id, isLiked } = movies.data[movies.currentMovieIndex];
 
   const iconClickHandler = () => {
     updateMovies(id);
@@ -51,7 +51,7 @@ const MovieDetails = ({ timer, message, showAd, showNotification, displayHandler
     return () => {
       clearInterval(interval);
     };
-  }, [currentMovie?.id, timer]);
+  }, [movies.currentMovieIndex, timer, message]);
 
   if (movies.currentMovieIndex === -1) {
     return <p className={styles["no-movie"]}>{MOVIE_DETAILS.noMovie}</p>;

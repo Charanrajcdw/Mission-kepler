@@ -21,8 +21,9 @@
 
 .play-icon-container {
   position: absolute;
-  left: 40%;
-  top: 35%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   height: 85px;
   width: 85px;
   color: #000;

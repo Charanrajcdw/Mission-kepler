@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import styles from "./Button.module.css";
 
-const Button = ({ clickHandler, className, children }) => {
+const Button = ({ clickHandler, className, children, ...props }) => {
   return (
-    <button className={`${styles.btn} ${styles[className]}`} onClick={clickHandler}>
+    <button className={`${styles.btn} ${styles[className]}`} onClick={clickHandler} {...props}>
       {children}
     </button>
   );

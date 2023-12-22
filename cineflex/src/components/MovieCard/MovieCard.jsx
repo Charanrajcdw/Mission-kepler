@@ -16,7 +16,6 @@ const MovieCard = ({ movieData, index, movieHandler, likeHandler }) => {
     likeHandler(id);
   };
 
-  console.log("movie card",id);
   return (
     <div className={styles["movie-card"]}>
       <Image className="movie-img" src={link} alt={movie} clickHandler={imageClickHandler} />

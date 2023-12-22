@@ -12,6 +12,7 @@
 .lottery-msg {
   font-size: 1.9rem;
   margin-left: 48px;
+  padding: 12px 0;
 }
 
 .lottery-input {

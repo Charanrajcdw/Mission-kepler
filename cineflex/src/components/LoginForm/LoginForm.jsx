@@ -36,7 +36,6 @@ const LoginForm = () => {
 
   return (
     <form onSubmit={submitHandler}>
-      <div className={styles["error-message"]}>{errorMessage}</div>
       <div className={styles["input-group"]}>
         <label htmlFor={LOGIN_FORM.email} className={styles["input-label"]}>
           {LOGIN_FORM.email}
@@ -63,6 +62,7 @@ const LoginForm = () => {
           defaultValue={LOGIN_FORM.passwordValue}
         />
       </div>
+      <p className={styles["error-message"]}>{errorMessage}</p>
       <Button className="form-btn">{LOGIN_FORM.button}</Button>
     </form>
   );
