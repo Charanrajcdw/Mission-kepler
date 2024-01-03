@@ -1,0 +1,29 @@
+.login-page-container {
+  height: 84vh;
+  overflow: hidden;
+}
+
+.login-form-container {
+  position: absolute;
+  width: 27%;
+  top: 11rem;
+  right: 6rem;
+  padding: 7.5rem 2.8rem 4rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-top: 5px solid #9b7714;
+}
+
+.form-title {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+.form-description {
+  font-size: 1rem;
+  text-align: justify;
+  color: #838485;
+  padding-right: 40px;
+  line-height: 1.75;
+  margin-bottom: 2rem;
+}

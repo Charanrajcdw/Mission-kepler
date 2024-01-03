@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+  background-color: #151515;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+a {
+  cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}

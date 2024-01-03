@@ -1,0 +1,40 @@
+.banner-img img {
+  height: 81vh;
+  object-position: top;
+}
+
+.trailer-img {
+  height: 420px;
+  width: 32%;
+}
+
+.teaser-img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.movie-img {
+  height: 17rem;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.movie-img:hover {
+  box-shadow: 0 0 10px #fff;
+}
+
+.movie-details-img {
+  height: 13.5rem;
+  width: 30%;
+  margin-bottom: 28px;
+}
+
+.ad-img {
+  width: 100%;
+  height: 72vh;
+}
+
+.ad-img img {
+  object-fit: fill;
+}
