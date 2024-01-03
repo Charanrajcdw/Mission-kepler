@@ -8,7 +8,8 @@ export const ThemeContext = createContext({
 
 const ThemeContextProvider = ({ children }) => {
   const [currentTheme, setCurrentTheme] = useState(THEME.light);
-  return <ThemeContext.Provider value={{ currentTheme, setCurrentTheme }}>{children}</ThemeContext.Provider>;
+  const toggleTheme = () => setCurrentTheme((prevTheme) => (prevTheme === THEME.light ? THEME.dark : THEME.light));
+  return <ThemeContext.Provider value={{ currentTheme, toggleTheme }}>{children}</ThemeContext.Provider>;
 };
 
 ThemeContextProvider.propTypes = {

@@ -1,4 +1,3 @@
-import "./App.css";
 import Home from "./pages/Home/Home";
 import ThemeContextProvider from "./contexts/theme.context";
 
