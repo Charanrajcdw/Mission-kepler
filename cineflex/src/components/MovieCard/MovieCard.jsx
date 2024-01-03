@@ -5,7 +5,7 @@ import styles from "./MovieCard.module.css";
 import Image from "../Image/Image";
 import { MOVIE_CARDS } from "../../constants/component.constants";
 
-const MovieCard = ({ movieData, index, movieHandler, likeHandler }) => {
+const MovieCard = memo(({ movieData, index, movieHandler, likeHandler }) => {
   const { link, movie, likes, id, isLiked } = movieData;
 
   const imageClickHandler = () => {
@@ -28,8 +28,9 @@ const MovieCard = ({ movieData, index, movieHandler, likeHandler }) => {
       </div>
     </div>
   );
-};
+});
 
+MovieCard.displayName = MOVIE_CARDS.displayName;
 MovieCard.propTypes = {
   movieData: PropTypes.object.isRequired,
   index: PropTypes.number.isRequired,
@@ -37,4 +38,4 @@ MovieCard.propTypes = {
   likeHandler: PropTypes.func,
 };
 
-export default memo(MovieCard);
+export default MovieCard;

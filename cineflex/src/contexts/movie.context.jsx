@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { storeLikedMovie } from "../utils/like.utils";
@@ -16,23 +16,26 @@ const MovieContextProvider = ({ children }) => {
   const { isUserLoggedIn } = useContext(UserContext);
   const navigate = useNavigate();
 
-  const updateMovies = (id) => {
-    if (isUserLoggedIn) {
-      setMovies((oldData) => {
-        const updateMovies = oldData.data.map((movie) => {
-          if (id == movie.id) {
-            storeLikedMovie(id);
-            return movie.isLiked ? { ...movie, likes: +movie.likes - 1, isLiked: false } : { ...movie, likes: +movie.likes + 1, isLiked: true };
-          } else {
-            return movie;
-          }
+  const updateMovies = useCallback(
+    (id) => {
+      if (isUserLoggedIn) {
+        setMovies((oldData) => {
+          const updateMovies = oldData.data.map((movie) => {
+            if (id == movie.id) {
+              storeLikedMovie(id);
+              return movie.isLiked ? { ...movie, likes: +movie.likes - 1, isLiked: false } : { ...movie, likes: +movie.likes + 1, isLiked: true };
+            } else {
+              return movie;
+            }
+          });
+          return { ...oldData, data: updateMovies };
         });
-        return { ...oldData, data: updateMovies };
-      });
-    } else {
-      navigate(ROUTE_PATHS.login);
-    }
-  };
+      } else {
+        navigate(ROUTE_PATHS.login);
+      }
+    },
+    [isUserLoggedIn, navigate]
+  );
 
   return <MovieContext.Provider value={{ movies, setMovies, updateMovies }}>{children}</MovieContext.Provider>;
 };

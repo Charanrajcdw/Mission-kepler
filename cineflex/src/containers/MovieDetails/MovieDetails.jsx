@@ -51,7 +51,7 @@ const MovieDetails = ({ timer, message, showAd, showNotification, displayHandler
     return () => {
       clearInterval(interval);
     };
-  }, [movies.currentMovieIndex, timer, message]);
+  }, [movies.currentMovieIndex, timer, message, currentMovie.id, movies.data, stopAd, displayHandler]);
 
   if (movies.currentMovieIndex === -1) {
     return <p className={styles["no-movie"]}>{MOVIE_DETAILS.noMovie}</p>;

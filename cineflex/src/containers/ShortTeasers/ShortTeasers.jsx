@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import useFetch from "../../hooks/useFetch";
 import styles from "./ShortTeasers.module.css";
 import TeaserCard from "../../components/TeaserCard/TeaserCard";
 import Loader from "../../components/Loader/Loader";
@@ -6,17 +6,7 @@ import { getTeasers } from "../../services/movies.services";
 import { SHORT_TEASERS } from "../../constants/container.constants";
 
 const ShortTeasers = () => {
-  const [teasers, setTeasers] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    getTeasers()
-      .then((teasers) => {
-        setTeasers(teasers);
-        setIsLoaded(true);
-      })
-      .catch(() => setTeasers([]));
-  }, []);
+  const { data: teasers, isLoaded } = useFetch(getTeasers, []);
 
   const getTeaserContent = () => {
     let teaserContent = "";

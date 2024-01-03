@@ -25,11 +25,11 @@ const MoviesList = ({ movies }) => {
     setMovies((prevData) => {
       return { ...prevData, currentMovieIndex: index };
     });
-  }, []);
+  }, [setMovies]);
 
   const likeHandler = useCallback((id) => {
     updateMovies(id);
-  }, []);
+  }, [updateMovies]);
 
   const getMoviesContent = () => {
     let moviesContent = "";

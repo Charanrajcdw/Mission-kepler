@@ -1,4 +1,5 @@
-import { useEffect, useState, useContext } from "react";
+import { useCallback, useContext } from "react";
+import useFetch from "../../hooks/useFetch";
 import styles from "./AllMovies.module.css";
 import MovieDetails from "../../containers/MovieDetails/MovieDetails";
 import MoviesList from "../../containers/MoviesList/MoviesList";
@@ -10,25 +11,26 @@ import { LIKES } from "../../constants";
 
 const AllMovies = () => {
   const { movies, setMovies } = useContext(MovieContext);
-  const [isLoaded, setIsLoaded] = useState(false);
   const { get } = localStorageHelper;
 
-  useEffect(() => {
-    getMovies()
-      .then((movies) => {
-        const likedMovies = get(LIKES.key) ?? [];
-        movies = movies.map((movie) => {
-          if (likedMovies.includes(movie.id)) {
-            return { ...movie, likes: +movie.likes + 1, isLiked: true };
-          } else {
-            return movie;
-          }
-        });
-        setMovies({ currentMovieIndex: 0, data: movies });
-        setIsLoaded(true);
-      })
-      .catch(() => setMovies({ currentMovieIndex: -1, data: [] }));
-  }, []);
+  const fetchFn = useCallback(async () => {
+    let movies = await getMovies();
+    return new Promise((resolve) => {
+      const likedMovies = get(LIKES.key) ?? [];
+      movies = movies.map((movie) => {
+        if (likedMovies.includes(movie.id)) {
+          return { ...movie, likes: +movie.likes + 1, isLiked: true };
+        } else {
+          return movie;
+        }
+      });
+      const movieData = { currentMovieIndex: 0, data: movies };
+      setMovies(movieData);
+      resolve(movieData);
+    });
+  }, [get, setMovies]);
+
+  const { isLoaded } = useFetch(fetchFn, movies);
 
   if (!isLoaded) {
     return <Loader />;

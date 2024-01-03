@@ -31,5 +31,6 @@ export const TEASER_CARD = {
 };
 
 export const MOVIE_CARDS = {
+  displayName: "Movie card",
   likes: " Likes",
 };

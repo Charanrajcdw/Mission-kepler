@@ -58,7 +58,7 @@ const TeaserCard = ({ title, videoSrc, timer, message, showAd, showNotification,
     return () => {
       clearInterval(interval);
     };
-  }, [timer]);
+  }, [displayHandler, message, stopAd, timer]);
 
   return (
     <div className={styles["teaser-card"]}>
