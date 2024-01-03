@@ -1,0 +1,25 @@
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.category-img {
+  height: 610px;
+}
+
+.product-img {
+  height: 188px;
+  border-radius: 0px 8px 8px 8px;
+  overflow: hidden;
+}
+
+.cart-img {
+  position: absolute;
+  top: 10px;
+  left: -30px;
+  height: 82px;
+  width: 124px;
+  border-radius: 8px;
+  overflow: hidden;
+}

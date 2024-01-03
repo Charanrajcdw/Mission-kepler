@@ -1,0 +1,29 @@
+.home-container {
+  width: 82%;
+  margin: 48px auto;
+}
+
+.title {
+  font-size: 2.72rem;
+  font-weight: 400;
+}
+
+.description {
+  font-size: 1.72rem;
+  font-weight: 400;
+  padding: 8px 0;
+}
+
+.categories-container {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  margin-top: 24px;
+}
+
+.no-categories-container {
+  display: flex;
+  height: 80vh;
+  justify-content: center;
+  align-items: center;
+}

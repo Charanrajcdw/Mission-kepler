@@ -1,0 +1,19 @@
+.category-card {
+  width: calc((100% - 66px) / 3);
+}
+
+.category-title {
+  padding: 14px 0;
+  font-size: 1.75rem;
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.category-description {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  font-weight: 400;
+  color: #4e4e4e;
+}

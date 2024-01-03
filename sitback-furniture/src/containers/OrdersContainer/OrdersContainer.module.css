@@ -1,0 +1,22 @@
+.orders-container {
+  background-color: #f7f7f7;
+  padding: 70px 0 82px 160px;
+  margin-bottom: 58px;
+}
+
+.orders-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.orders-description {
+  margin: 10px 0 20px 0;
+  font-size: 0.96rem;
+  font-weight: 400;
+}
+
+.ordered-products {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 43.5px;
+}
