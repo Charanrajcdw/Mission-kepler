@@ -15,7 +15,7 @@ BlogCard.propTypes = {
   title: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   details: PropTypes.string.isRequired,
-  isSelected: PropTypes.bool.isRequired,
+  isSelected: PropTypes.bool,
 };
 
 export default BlogCard;

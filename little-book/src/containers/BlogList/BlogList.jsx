@@ -12,7 +12,7 @@ const BlogList = () => {
 
   useEffect(() => {
     getBlogs().then((blogs) => {
-      setBlogs([blogs]);
+      setBlogs(blogs);
       setIsLoaded(true);
     });
   }, []);
@@ -31,7 +31,7 @@ const BlogList = () => {
     <div className={styles.blogListContainer}>
       <div className={styles.searchBar}>
         <input type="text" className={styles.search} placeholder={BLOG_LIST.searchText} />
-        <Button className="newBtn">{BLOG_LIST.buttonText}</Button>
+        <Button className="pinkBtn">{BLOG_LIST.buttonText}</Button>
       </div>
       <div className={styles.blogsContainer}>{isLoaded ? getBlogsContent() : <Loader />}</div>
     </div>

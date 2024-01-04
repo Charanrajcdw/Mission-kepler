@@ -13,3 +13,11 @@ export const BLOG_LIST = {
   buttonText: "NEW",
   noBlogs: "There is no blogs available",
 };
+
+export const BLOG_DETAILS = {
+  noBlog: "There is no blog content available to show",
+  cancelText: "CANCEL",
+  editText: "EDIT CONTENT",
+  saveText: "SAVE CONTENT",
+  saveSuccess: "Blog saved successfully",
+};
