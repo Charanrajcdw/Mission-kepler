@@ -2,8 +2,10 @@ import PropTypes from "prop-types";
 import styles from "./Button.module.scss";
 
 const Button = ({ clickHandler, className, children, ...props }) => {
+  const styleNames = className.split(" ").map((style) => styles[style]).join(" ");
+  
   return (
-    <button className={`${styles.btn} ${styles[className]}`} onClick={clickHandler} {...props}>
+    <button className={`${styles.btn} ${styleNames}`} onClick={clickHandler} {...props}>
       {children}
     </button>
   );

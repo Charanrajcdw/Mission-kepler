@@ -74,15 +74,15 @@ const BlogDetails = () => {
             <div className={styles.buttonsContainer}>
               {isEditing ? (
                 <>
-                  <Button className="blueBtn" clickHandler={cancelHandler}>
+                  <Button className="blueBtn smallBtn" clickHandler={cancelHandler}>
                     {BLOG_DETAILS.cancelText}
                   </Button>
-                  <Button className="pinkBtn" clickHandler={saveHandler}>
+                  <Button className="pinkBtn smallBtn" clickHandler={saveHandler}>
                     {BLOG_DETAILS.saveText}
                   </Button>
                 </>
               ) : (
-                <Button className="blueBtn" clickHandler={editHandler}>
+                <Button className="blueBtn smallBtn" clickHandler={editHandler}>
                   {BLOG_DETAILS.editText}
                 </Button>
               )}
