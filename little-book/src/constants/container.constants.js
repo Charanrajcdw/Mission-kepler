@@ -7,3 +7,9 @@ export const SIDEBAR = {
   switchToLight: "Switch to Light Mode",
   blogs: "Blogs",
 };
+
+export const BLOG_LIST = {
+  searchText: "Search Blogs",
+  buttonText: "NEW",
+  noBlogs: "There is no blogs available",
+};
