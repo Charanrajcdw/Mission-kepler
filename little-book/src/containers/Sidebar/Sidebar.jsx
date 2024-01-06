@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import styles from "./Sidebar.module.scss";
 import Checkbox from "../../components/Checkbox/Checkbox";
-import { SIDEBAR, THEME } from "../../constants";
+import { MODAL, SIDEBAR, THEME } from "../../constants";
 import { ThemeContext } from "../../contexts/theme.context";
 
-const Sidebar = () => {
+const Sidebar = ({ setCurrentModal }) => {
   const LOGO = SIDEBAR.logo.split(" ");
   const { currentTheme, toggleTheme } = useContext(ThemeContext);
 
@@ -33,7 +33,9 @@ const Sidebar = () => {
         <div>{getFilterContent()}</div>
       </div>
       <div className={styles.optionsContainer}>
-        <p className={styles.members}>{SIDEBAR.viewMembers}</p>
+        <p className={styles.members} onClick={() => setCurrentModal(MODAL.members)}>
+          {SIDEBAR.viewMembers}
+        </p>
         <p className={styles.theme} onClick={changeTheme}>
           {currentTheme === THEME.light ? SIDEBAR.switchToDark : SIDEBAR.switchToLight}
         </p>

@@ -1,7 +1,13 @@
 .blogImg {
-  width: 100%;
   height: 435px;
   img {
     border-radius: 18px;
+  }
+}
+
+.memberImg {
+  height: 154px;
+  img {
+    border-radius: 15px 15px 15px 0;
   }
 }
