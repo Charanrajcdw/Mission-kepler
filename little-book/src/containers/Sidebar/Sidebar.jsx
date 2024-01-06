@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import PropTypes from "prop-types";
 import styles from "./Sidebar.module.scss";
 import Checkbox from "../../components/Checkbox/Checkbox";
 import { MODAL, SIDEBAR, THEME } from "../../constants";
@@ -42,6 +43,10 @@ const Sidebar = ({ setCurrentModal }) => {
       </div>
     </aside>
   );
+};
+
+Sidebar.propTypes = {
+  setCurrentModal: PropTypes.func.isRequired,
 };
 
 export default Sidebar;

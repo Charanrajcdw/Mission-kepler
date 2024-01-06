@@ -11,17 +11,17 @@ import { MODAL } from "../../constants";
 
 const Home = () => {
   const { currentTheme } = useContext(ThemeContext);
-  const [currentModal, setCurrentModal] = useState(MODAL.members);
+  const [currentModal, setCurrentModal] = useState(MODAL.newBlog);
 
   return (
     <div className={`${styles.homeContainer} ${currentTheme}`}>
       <Sidebar setCurrentModal={setCurrentModal} />
-      <BlogList />
+      <BlogList setCurrentModal={setCurrentModal} />
       <BlogDetails />
       {currentModal && (
         <Modal title={currentModal} setCurrentModal={setCurrentModal}>
           {currentModal == MODAL.members && <MembersList />}
-          {currentModal == MODAL.newBlog && <BlogForm />}
+          {currentModal == MODAL.newBlog && <BlogForm setCurrentModal={setCurrentModal} />}
         </Modal>
       )}
     </div>
