@@ -14,3 +14,9 @@ export const BLOG_FORM = {
   titlePlaceholder: "Name your blog",
   detailsPlaceholder: "Write Content Here ..",
 };
+
+export const WARNING_MODAL = {
+  title: "Are you sure want to continue?",
+  continue: "Continue",
+  cancel: "Cancel",
+};
