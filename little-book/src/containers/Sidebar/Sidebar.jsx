@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import styles from "./Sidebar.module.scss";
 import Checkbox from "../../components/Checkbox/Checkbox";
@@ -7,13 +8,13 @@ import { ThemeContext } from "../../contexts/theme.context";
 
 const Sidebar = ({ setCurrentModal }) => {
   const LOGO = SIDEBAR.logo.split(" ");
+  const { blogTypes: filterValues } = useSelector((state) => state.blogs);
   const { currentTheme, toggleTheme } = useContext(ThemeContext);
 
   const changeTheme = () => {
     toggleTheme();
   };
 
-  const filterValues = ["Regional", "National", "International"];
   const getFilterContent = () => {
     let filterContent = "";
     if (filterValues.length > 0) {

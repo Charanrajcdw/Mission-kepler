@@ -12,8 +12,8 @@ import { MODAL } from "../../constants";
 
 const Home = () => {
   const { currentTheme } = useContext(ThemeContext);
-  const [currentModal, setCurrentModal] = useState(MODAL.newBlog);
-  const [isWarningVisible, setIsWarningVisible] = useState(true);
+  const [currentModal, setCurrentModal] = useState();
+  const [isWarningVisible, setIsWarningVisible] = useState();
 
   const continueHandler = () => {
     setIsWarningVisible(false);

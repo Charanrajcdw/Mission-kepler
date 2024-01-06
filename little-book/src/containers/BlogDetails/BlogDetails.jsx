@@ -1,11 +1,11 @@
 import { useEffect, useState, useContext, useRef } from "react";
+import { useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import styles from "./BlogDetails.module.scss";
 import Image from "../../components/Image/Image";
 import Button from "../../components/Button/Button";
 import Loader from "../../components/Loader/Loader";
-import { getBlogs } from "../../services/blog.services";
 import { showSuccessToast } from "../../utils/toast.utils";
 import { ThemeContext } from "../../contexts/theme.context";
 import { BLOG_DETAILS } from "../../constants";
@@ -13,17 +13,9 @@ import { BLOG_DETAILS } from "../../constants";
 const BlogDetails = () => {
   const blogTitleRef = useRef();
   const blogDetailsRef = useRef();
-  const [currentBlog, setCurrentBlog] = useState();
-  const [isLoaded, setIsLoaded] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const { currentTheme } = useContext(ThemeContext);
-
-  useEffect(() => {
-    getBlogs().then((blogs) => {
-      setCurrentBlog(blogs[2]);
-      setIsLoaded(true);
-    });
-  }, []);
+  const { currentBlog, isLoaded } = useSelector((state) => state.blogs);
 
   useEffect(() => {
     blogTitleRef.current && heightHandler(blogTitleRef.current);
