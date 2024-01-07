@@ -1,21 +1,22 @@
-import { useEffect, useState, useContext, useRef } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useContext, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import styles from "./BlogDetails.module.scss";
 import Image from "../../components/Image/Image";
 import Button from "../../components/Button/Button";
 import Loader from "../../components/Loader/Loader";
-import { showSuccessToast } from "../../utils/toast.utils";
+import { showSuccessToast, showWarningToast } from "../../utils/toast.utils";
 import { ThemeContext } from "../../contexts/theme.context";
 import { BLOG_DETAILS } from "../../constants";
+import { blogActions } from "../../store";
 
 const BlogDetails = () => {
   const blogTitleRef = useRef();
   const blogDetailsRef = useRef();
-  const [isEditing, setIsEditing] = useState(false);
   const { currentTheme } = useContext(ThemeContext);
-  const { currentBlog, isLoaded } = useSelector((state) => state.blogs);
+  const { blogData, currentBlog, isLoaded, isEditing } = useSelector((state) => state.blogs);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     blogTitleRef.current && heightHandler(blogTitleRef.current);
@@ -23,16 +24,25 @@ const BlogDetails = () => {
   }, [currentBlog]);
 
   const editHandler = () => {
-    setIsEditing(true);
+    dispatch(blogActions.modifyEditStatus(true));
   };
 
   const saveHandler = () => {
-    showSuccessToast(BLOG_DETAILS.saveSuccess, currentTheme);
-    setIsEditing(false);
+    const title = blogTitleRef.current.value.trim();
+    const details = blogDetailsRef.current.value.trim();
+    const filteredBlogData = blogData.filter((blog) => blog.title !== currentBlog.title);
+    if (title.length <= 0 || details.length <= 0) {
+      showWarningToast(BLOG_DETAILS.invalidValues, currentTheme);
+    } else if (filteredBlogData.some((blog) => blog.title.toLowerCase() === title.toLowerCase())) {
+      showWarningToast(BLOG_DETAILS.invalidBlog, currentTheme);
+    } else {
+      showSuccessToast(BLOG_DETAILS.saveSuccess, currentTheme);
+      dispatch(blogActions.editExistingBlog({ title, details }));
+    }
   };
 
   const cancelHandler = () => {
-    setIsEditing(false);
+    dispatch(blogActions.modifyEditStatus(false));
   };
 
   const heightHandler = (element) => {

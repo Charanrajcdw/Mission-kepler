@@ -20,4 +20,6 @@ export const BLOG_DETAILS = {
   editText: "EDIT CONTENT",
   saveText: "SAVE CONTENT",
   saveSuccess: "Blog saved successfully",
+  invalidValues: "Invalid title or description",
+  invalidBlog: "Blog title already exists",
 };
