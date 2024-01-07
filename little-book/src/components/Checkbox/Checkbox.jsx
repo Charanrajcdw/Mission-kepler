@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import styles from "./Checkbox.module.scss";
@@ -7,7 +7,7 @@ import { blogActions } from "../../store";
 
 const Checkbox = ({ label, modalHandler }) => {
   const [isChecked, setIsChecked] = useState(true);
-  const { isEditing } = useSelector((state) => state.blogs);
+  const isEditing = useSelector((state) => state.blogs.isEditing);
   const dispatch = useDispatch();
 
   const changeHandler = () => {
@@ -35,4 +35,6 @@ Checkbox.propTypes = {
   modalHandler: PropTypes.func.isRequired,
 };
 
-export default Checkbox;
+export const memoizedCheckbox = memo(Checkbox);
+
+export default memoizedCheckbox;

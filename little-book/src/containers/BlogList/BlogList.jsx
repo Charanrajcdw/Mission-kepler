@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import styles from "./BlogList.module.scss";
@@ -23,27 +23,30 @@ const BlogList = ({ modalHandler }) => {
   }, [blogs]);
 
   const searchHandler = (e) => {
-    if (isEditing) {
-      modalHandler(false, true);
-      return;
-    }
     dispatch(blogActions.modifySearchTerm(e.target.value));
   };
 
   const newBtnHandler = () => {
-    if (isEditing) {
-      modalHandler(false, true);
-      return;
-    }
     modalHandler(MODAL.newBlog, false);
     dispatch(blogActions.modifyEditStatus(true));
   };
+
+  const blogChangeHandler = useCallback(
+    (blog) => {
+      if (isEditing) {
+        modalHandler(false, true);
+        return;
+      }
+      dispatch(blogActions.modifyCurrentBlog(blog));
+    },
+    [dispatch, isEditing, modalHandler]
+  );
 
   const getBlogsContent = () => {
     let blogContent = "";
     if (blogs.length > 0) {
       blogContent = blogs.map((blog) => (
-        <BlogCard key={blog.title} blog={blog} isSelected={currentBlog.title === blog.title} modalHandler={modalHandler} />
+        <BlogCard key={blog.title} blog={blog} isSelected={currentBlog.title === blog.title} blogChangeHandler={blogChangeHandler} />
       ));
     } else {
       blogContent = <p className={styles.noBlogs}>{BLOG_LIST.noBlogs}</p>;
@@ -54,8 +57,15 @@ const BlogList = ({ modalHandler }) => {
   return (
     <div className={styles.blogListContainer}>
       <div className={styles.searchBar}>
-        <input type="text" className={styles.search} placeholder={BLOG_LIST.searchText} value={searchTerm} onChange={searchHandler} />
-        <Button className="pinkBtn" clickHandler={newBtnHandler}>
+        <input
+          type="text"
+          className={styles.search}
+          placeholder={BLOG_LIST.searchText}
+          value={searchTerm}
+          onChange={searchHandler}
+          disabled={isEditing}
+        />
+        <Button className="pinkBtn" clickHandler={newBtnHandler} disabled={isEditing}>
           {BLOG_LIST.buttonText}
         </Button>
       </div>

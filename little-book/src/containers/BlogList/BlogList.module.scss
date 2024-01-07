@@ -25,6 +25,10 @@
       &:focus {
         outline: 1px solid var(--pink);
       }
+
+      &:disabled {
+        cursor: not-allowed;
+      }
     }
   }
 

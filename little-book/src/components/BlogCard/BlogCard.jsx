@@ -1,19 +1,12 @@
-import { useSelector, useDispatch } from "react-redux";
+import { memo } from "react";
 import PropTypes from "prop-types";
 import styles from "./BlogCard.module.scss";
-import { blogActions } from "../../store";
 
-const BlogCard = ({ blog, isSelected, modalHandler }) => {
+const BlogCard = ({ blog, isSelected, blogChangeHandler }) => {
   const { title, type, details } = blog;
-  const { isEditing } = useSelector((state) => state.blogs);
-  const dispatch = useDispatch();
 
   const clickHandler = () => {
-    if (isEditing) {
-      modalHandler(false, true);
-      return;
-    }
-    dispatch(blogActions.modifyCurrentBlog(blog));
+    blogChangeHandler(blog);
   };
 
   return (
@@ -32,7 +25,9 @@ BlogCard.propTypes = {
     details: PropTypes.string.isRequired,
   }),
   isSelected: PropTypes.bool.isRequired,
-  modalHandler: PropTypes.func,
+  blogChangeHandler: PropTypes.func.isRequired,
 };
 
-export default BlogCard;
+const memoizedBlogCard = memo(BlogCard);
+
+export default memoizedBlogCard;
