@@ -1,9 +1,22 @@
+import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import styles from "./WarningModal.module.scss";
 import Button from "../Button/Button";
-import { WARNING_MODAL } from "../../constants";
+import { MODAL, WARNING_MODAL } from "../../constants";
+import { blogActions } from "../../store";
 
-const WarningModal = ({ continueHandler, cancelHandler }) => {
+const WarningModal = ({ modalHandler }) => {
+  const dispatch = useDispatch();
+
+  const continueHandler = () => {
+    modalHandler(MODAL.remove, false);
+    dispatch(blogActions.modifyEditStatus(false));
+  };
+
+  const cancelHandler = () => {
+    modalHandler(false, false);
+  };
+
   return (
     <div className={styles.warningModalContainer}>
       <div className={styles.warningModalContent}>
@@ -22,8 +35,7 @@ const WarningModal = ({ continueHandler, cancelHandler }) => {
 };
 
 WarningModal.propTypes = {
-  continueHandler: PropTypes.func.isRequired,
-  cancelHandler: PropTypes.func.isRequired,
+  modalHandler: PropTypes.func.isRequired,
 };
 
 export default WarningModal;

@@ -9,8 +9,8 @@ import { BLOG_LIST, MODAL } from "../../constants";
 import { getBlogs } from "../../services/blog.services";
 import { blogActions } from "../../store";
 
-const BlogList = ({ setCurrentModal }) => {
-  const { filteredBlogData: blogs, isLoaded, currentBlog, searchTerm } = useSelector((state) => state.blogs);
+const BlogList = ({ modalHandler }) => {
+  const { filteredBlogData: blogs, isLoaded, currentBlog, searchTerm, isEditing } = useSelector((state) => state.blogs);
   const dispatch = useDispatch();
   const blogsRef = useRef();
 
@@ -23,13 +23,28 @@ const BlogList = ({ setCurrentModal }) => {
   }, [blogs]);
 
   const searchHandler = (e) => {
+    if (isEditing) {
+      modalHandler(false, true);
+      return;
+    }
     dispatch(blogActions.modifySearchTerm(e.target.value));
+  };
+
+  const newBtnHandler = () => {
+    if (isEditing) {
+      modalHandler(false, true);
+      return;
+    }
+    modalHandler(MODAL.newBlog, false);
+    dispatch(blogActions.modifyEditStatus(true));
   };
 
   const getBlogsContent = () => {
     let blogContent = "";
     if (blogs.length > 0) {
-      blogContent = blogs.map((blog) => <BlogCard key={blog.title} blog={blog} isSelected={currentBlog.title === blog.title} />);
+      blogContent = blogs.map((blog) => (
+        <BlogCard key={blog.title} blog={blog} isSelected={currentBlog.title === blog.title} modalHandler={modalHandler} />
+      ));
     } else {
       blogContent = <p className={styles.noBlogs}>{BLOG_LIST.noBlogs}</p>;
     }
@@ -40,7 +55,7 @@ const BlogList = ({ setCurrentModal }) => {
     <div className={styles.blogListContainer}>
       <div className={styles.searchBar}>
         <input type="text" className={styles.search} placeholder={BLOG_LIST.searchText} value={searchTerm} onChange={searchHandler} />
-        <Button className="pinkBtn" clickHandler={() => setCurrentModal(MODAL.newBlog)}>
+        <Button className="pinkBtn" clickHandler={newBtnHandler}>
           {BLOG_LIST.buttonText}
         </Button>
       </div>
@@ -52,7 +67,7 @@ const BlogList = ({ setCurrentModal }) => {
 };
 
 BlogList.propTypes = {
-  setCurrentModal: PropTypes.func.isRequired,
+  modalHandler: PropTypes.func.isRequired,
 };
 
 export default BlogList;

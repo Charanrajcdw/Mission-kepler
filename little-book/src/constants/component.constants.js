@@ -1,6 +1,7 @@
 export const MODAL = {
   members: "Members",
   newBlog: "Add New Blog",
+  remove: "Remove",
 };
 
 export const MEMBERS_LIST = {
@@ -20,7 +21,7 @@ export const BLOG_FORM = {
 };
 
 export const WARNING_MODAL = {
-  title: "Are you sure want to continue?",
+  title: "Unsaved changes will be lost. Are you sure to continue?",
   continue: "Continue",
   cancel: "Cancel",
 };

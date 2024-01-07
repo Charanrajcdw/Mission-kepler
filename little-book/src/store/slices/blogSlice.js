@@ -14,6 +14,7 @@ const blogSlice = createSlice({
     currentBlog: {},
     isLoaded: false,
     isEditing: false,
+    isWarningVisible: false,
     searchTerm: "",
   },
   reducers: {
@@ -49,6 +50,7 @@ const blogSlice = createSlice({
       !state.blogTypes.includes(newBlogType) && state.blogTypes.push(newBlogType);
       !state.selectedBlogTypes.includes(newBlogType) && state.selectedBlogTypes.push(newBlogType);
       state.filteredBlogData = filterData(state.blogData, state.selectedBlogTypes, state.searchTerm);
+      state.isEditing = false;
     },
     modifyEditStatus: (state, action) => {
       state.isEditing = action.payload;

@@ -12,30 +12,26 @@ import { MODAL } from "../../constants";
 
 const Home = () => {
   const { currentTheme } = useContext(ThemeContext);
+  const [isWarningVisible, setIsWarningVisible] = useState(false);
   const [currentModal, setCurrentModal] = useState();
-  const [isWarningVisible, setIsWarningVisible] = useState();
 
-  const continueHandler = () => {
-    setIsWarningVisible(false);
-    setCurrentModal();
-  };
-
-  const cancelHandler = () => {
-    setIsWarningVisible(false);
+  const modalHandler = (modalValue, isWarning) => {
+    if (modalValue) modalValue === MODAL.remove ? setCurrentModal() : setCurrentModal(modalValue);
+    setIsWarningVisible(isWarning);
   };
 
   return (
     <div className={`${styles.homeContainer} ${currentTheme}`}>
-      <Sidebar setCurrentModal={setCurrentModal} />
-      <BlogList setCurrentModal={setCurrentModal} />
+      <Sidebar modalHandler={modalHandler} />
+      <BlogList modalHandler={modalHandler} />
       <BlogDetails />
       {currentModal && (
-        <Modal title={currentModal} setCurrentModal={setCurrentModal}>
+        <Modal title={currentModal} modalHandler={modalHandler}>
           {currentModal == MODAL.members && <MembersList />}
-          {currentModal == MODAL.newBlog && <BlogForm setCurrentModal={setCurrentModal} />}
+          {currentModal == MODAL.newBlog && <BlogForm modalHandler={modalHandler} />}
         </Modal>
       )}
-      {isWarningVisible && <WarningModal continueHandler={continueHandler} cancelHandler={cancelHandler} />}
+      {isWarningVisible && <WarningModal modalHandler={modalHandler} />}
     </div>
   );
 };

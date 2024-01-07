@@ -1,9 +1,17 @@
+import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import styles from "./Modal.module.scss";
+import { MODAL } from "../../constants";
 
-const Modal = ({ setCurrentModal, children }) => {
+const Modal = ({ modalHandler, children }) => {
+  const { isEditing } = useSelector((state) => state.blogs);
+
   const removeModal = () => {
-    setCurrentModal();
+    if (isEditing) {
+      modalHandler(false, true);
+      return;
+    }
+    modalHandler(MODAL.remove, false);
   };
 
   return (
@@ -17,7 +25,7 @@ const Modal = ({ setCurrentModal, children }) => {
 
 Modal.propTypes = {
   children: PropTypes.any.isRequired,
-  setCurrentModal: PropTypes.func.isRequired,
+  modalHandler: PropTypes.func.isRequired,
 };
 
 export default Modal;

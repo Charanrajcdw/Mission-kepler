@@ -6,7 +6,7 @@ import Checkbox from "../../components/Checkbox/Checkbox";
 import { MODAL, SIDEBAR, THEME } from "../../constants";
 import { ThemeContext } from "../../contexts/theme.context";
 
-const Sidebar = ({ setCurrentModal }) => {
+const Sidebar = ({ modalHandler }) => {
   const LOGO = SIDEBAR.logo.split(" ");
   const { blogTypes: filterValues } = useSelector((state) => state.blogs);
   const { currentTheme, toggleTheme } = useContext(ThemeContext);
@@ -18,7 +18,7 @@ const Sidebar = ({ setCurrentModal }) => {
   const getFilterContent = () => {
     let filterContent = "";
     if (filterValues.length > 0) {
-      filterContent = filterValues.map((filter) => <Checkbox key={filter} label={filter} />);
+      filterContent = filterValues.map((filter) => <Checkbox key={filter} label={filter} modalHandler={modalHandler} />);
     } else {
       filterContent = <p>{SIDEBAR.noFilter}</p>;
     }
@@ -35,7 +35,7 @@ const Sidebar = ({ setCurrentModal }) => {
         <div>{getFilterContent()}</div>
       </div>
       <div className={styles.optionsContainer}>
-        <p className={styles.members} onClick={() => setCurrentModal(MODAL.members)}>
+        <p className={styles.members} onClick={() => modalHandler(MODAL.members, false)}>
           {SIDEBAR.viewMembers}
         </p>
         <p className={styles.theme} onClick={changeTheme}>
@@ -47,7 +47,7 @@ const Sidebar = ({ setCurrentModal }) => {
 };
 
 Sidebar.propTypes = {
-  setCurrentModal: PropTypes.func.isRequired,
+  modalHandler: PropTypes.func.isRequired,
 };
 
 export default Sidebar;

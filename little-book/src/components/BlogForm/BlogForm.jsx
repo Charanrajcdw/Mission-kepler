@@ -7,10 +7,10 @@ import styles from "./BlogForm.module.scss";
 import Button from "../Button/Button";
 import { ThemeContext } from "../../contexts/theme.context";
 import { showSuccessToast, showWarningToast } from "../../utils/toast.utils";
-import { BLOG_FORM } from "../../constants";
+import { BLOG_FORM, MODAL } from "../../constants";
 import { blogActions } from "../../store";
 
-const BlogForm = ({ setCurrentModal }) => {
+const BlogForm = ({ modalHandler }) => {
   const titleRef = useRef();
   const detailsRef = useRef();
   const { currentTheme } = useContext(ThemeContext);
@@ -27,7 +27,7 @@ const BlogForm = ({ setCurrentModal }) => {
     } else {
       showSuccessToast(BLOG_FORM.blogAdded, currentTheme);
       dispatch(blogActions.addNewBlog({ title, details, type: BLOG_FORM.localBlog }));
-      setCurrentModal();
+      modalHandler(MODAL.remove, false);
     }
   };
 
@@ -49,7 +49,7 @@ const BlogForm = ({ setCurrentModal }) => {
 };
 
 BlogForm.propTypes = {
-  setCurrentModal: PropTypes.func.isRequired,
+  modalHandler: PropTypes.func.isRequired,
 };
 
 export default BlogForm;

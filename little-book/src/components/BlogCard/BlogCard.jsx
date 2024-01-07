@@ -1,13 +1,18 @@
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import styles from "./BlogCard.module.scss";
 import { blogActions } from "../../store";
 
-const BlogCard = ({ blog, isSelected }) => {
+const BlogCard = ({ blog, isSelected, modalHandler }) => {
   const { title, type, details } = blog;
+  const { isEditing } = useSelector((state) => state.blogs);
   const dispatch = useDispatch();
 
   const clickHandler = () => {
+    if (isEditing) {
+      modalHandler(false, true);
+      return;
+    }
     dispatch(blogActions.modifyCurrentBlog(blog));
   };
 
@@ -26,7 +31,8 @@ BlogCard.propTypes = {
     type: PropTypes.string.isRequired,
     details: PropTypes.string.isRequired,
   }),
-  isSelected: PropTypes.bool,
+  isSelected: PropTypes.bool.isRequired,
+  modalHandler: PropTypes.func,
 };
 
 export default BlogCard;
