@@ -34,10 +34,14 @@
     gap: 20px;
     max-height: 86vh;
     overflow: auto;
-    margin:24px 0;
+    margin: 24px 0;
 
     &::-webkit-scrollbar {
       display: none;
+    }
+
+    .noBlogs {
+      color: var(--primary-font-bg);
     }
   }
 }

@@ -13,6 +13,10 @@ export const BLOG_FORM = {
   button: "ADD",
   titlePlaceholder: "Name your blog",
   detailsPlaceholder: "Write Content Here ..",
+  invalidValues: "Invalid title or description",
+  invalidBlog: "Blog title already exists",
+  blogAdded: "New Blog added successfully",
+  localBlog: "local",
 };
 
 export const WARNING_MODAL = {

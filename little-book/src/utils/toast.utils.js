@@ -10,3 +10,14 @@ export const showSuccessToast = (message, currentTheme) => {
     theme: currentTheme,
   });
 };
+
+export const showWarningToast = (message, currentTheme) => {
+  toast.warn(message, {
+    position: "top-right",
+    autoClose: 2000,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    theme: currentTheme,
+  });
+};

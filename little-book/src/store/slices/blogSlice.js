@@ -40,6 +40,15 @@ const blogSlice = createSlice({
       state.filteredBlogData = filterData(state.blogData, state.selectedBlogTypes, state.searchTerm);
       state.currentBlog = state.filteredBlogData.length > 0 ? state.filteredBlogData[0] : null;
     },
+    addNewBlog(state, action) {
+      const newBlog = { ...action.payload };
+      const newBlogType = newBlog.type.toLowerCase();
+      state.blogData = [...state.blogData, newBlog];
+      state.currentBlog = { ...newBlog };
+      !state.blogTypes.includes(newBlogType) && state.blogTypes.push(newBlogType);
+      !state.selectedBlogTypes.includes(newBlogType) && state.selectedBlogTypes.push(newBlogType);
+      state.filteredBlogData = filterData(state.blogData, state.selectedBlogTypes, state.searchTerm);
+    },
   },
 });
 
