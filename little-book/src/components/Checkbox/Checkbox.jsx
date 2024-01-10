@@ -22,7 +22,6 @@ const Checkbox = ({ label, modalHandler }) => {
   return (
     <div className={styles.checkBoxGroup}>
       <input type="checkbox" checked={isChecked} id={label} value={label} onChange={changeHandler} />
-      <span className={styles.checkmark}></span>
       <label htmlFor={label}>
         {label} {SIDEBAR.blogs}
       </label>

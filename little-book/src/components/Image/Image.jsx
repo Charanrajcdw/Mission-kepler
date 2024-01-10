@@ -9,7 +9,7 @@ const Image = ({ src, alt, className }) => {
 
   return (
     <div className={styles[className]}>
-      <img src={src || BrokenImage} alt={alt} onError={BrokenImageHandler} className={styles.img} />
+      <img src={src} alt={alt} onError={BrokenImageHandler} className={styles.img} />
     </div>
   );
 };
