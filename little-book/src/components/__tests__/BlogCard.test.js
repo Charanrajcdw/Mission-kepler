@@ -1,5 +1,4 @@
-import { render, screen, userEvent } from "../../utils/test.utils.jsx";
-import renderer from "react-test-renderer";
+import { render, screen, createSnapshot, userEvent } from "../../utils/test.utils.jsx";
 import BlogCard from "../BlogCard/BlogCard";
 
 describe("BlogCard", () => {
@@ -16,6 +15,16 @@ describe("BlogCard", () => {
     expect(titleElement).toBeInTheDocument();
     expect(detailsElement).toBeInTheDocument();
     expect(typeElement).toBeInTheDocument();
+  });
+
+  it("should match Blog Card snapshot", () => {
+    const blogData = {
+      title: "Blog title",
+      type: "Local",
+      details: "Blog details",
+    };
+    const blogcard = createSnapshot(<BlogCard blog={blogData} isSelected={true} blogChangeHandler={() => {}} />);
+    expect(blogcard).toMatchSnapshot();
   });
 
   it("should update current blog", async () => {

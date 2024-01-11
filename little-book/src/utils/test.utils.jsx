@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { render } from "@testing-library/react";
+import renderer from "react-test-renderer";
 import { Provider } from "react-redux";
 import ThemeContextProvider from "../contexts/theme.context";
 import blogSlice from "../store/slices/blogSlice";
@@ -12,12 +13,13 @@ const customRender = (
       reducer: { blogs: blogSlice.reducer },
       preloadedState,
     }),
+    theme = "light",
     ...options
   } = {}
 ) => {
   const ProviderWrapper = ({ children }) => {
     return (
-      <ThemeContextProvider theme="light">
+      <ThemeContextProvider theme={theme}>
         <Provider store={store}>{children}</Provider>
       </ThemeContextProvider>
     );
@@ -25,6 +27,27 @@ const customRender = (
   return render(ui, { wrapper: ProviderWrapper, ...options });
 };
 
+const customCreateSnapshot = (
+  ui,
+  {
+    preloadedState = {},
+    store = configureStore({
+      reducer: { blogs: blogSlice.reducer },
+      preloadedState,
+    }),
+    theme = "light",
+  } = {}
+) => {
+  const ProviderWrapper = ({ children }) => {
+    return (
+      <ThemeContextProvider theme={theme}>
+        <Provider store={store}>{children}</Provider>
+      </ThemeContextProvider>
+    );
+  };
+  return renderer.create(<ProviderWrapper>{ui}</ProviderWrapper>).toJSON();
+};
+
 export * from "@testing-library/react";
 export { default as userEvent } from "@testing-library/user-event";
-export { customRender as render };
+export { customRender as render, customCreateSnapshot as createSnapshot };

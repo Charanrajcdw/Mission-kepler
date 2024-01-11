@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox should match checkbox snapshot 1`] = `
+<div
+  className="checkBoxGroup"
+>
+  <input
+    checked={true}
+    id="local"
+    onChange={[Function]}
+    type="checkbox"
+    value="local"
+  />
+  <label
+    htmlFor="local"
+  >
+    local
+     
+    Blogs
+  </label>
+</div>
+`;

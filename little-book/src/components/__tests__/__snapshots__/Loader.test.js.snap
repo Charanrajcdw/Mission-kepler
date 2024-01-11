@@ -1,6 +1,170 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`loader renders correctly 1`] = `
+exports[`match loader snapshot 1`] = `
+<div
+  className="loader"
+>
+  <span
+    className="loader"
+    style={
+      {
+        "display": "inherit",
+        "fontSize": "0",
+        "height": "204px",
+        "left": 68,
+        "position": "relative",
+        "top": 68,
+        "width": "204px",
+      }
+    }
+  >
+    <span
+      style={
+        {
+          "animation": "react-spinners-FadeLoader-fade 1.2s 0.12s infinite ease-in-out",
+          "animationFillMode": "both",
+          "backgroundColor": "#bbb",
+          "borderRadius": "10px",
+          "height": "50px",
+          "left": "0",
+          "margin": "50px",
+          "position": "absolute",
+          "top": "68px",
+          "transition": "2s",
+          "width": "10px",
+        }
+      }
+    />
+    <span
+      style={
+        {
+          "animation": "react-spinners-FadeLoader-fade 1.2s 0.24s infinite ease-in-out",
+          "animationFillMode": "both",
+          "backgroundColor": "#bbb",
+          "borderRadius": "10px",
+          "height": "50px",
+          "left": "46.36363636363636px",
+          "margin": "50px",
+          "position": "absolute",
+          "top": "46.36363636363636px",
+          "transform": "rotate(-45deg)",
+          "transition": "2s",
+          "width": "10px",
+        }
+      }
+    />
+    <span
+      style={
+        {
+          "animation": "react-spinners-FadeLoader-fade 1.2s 0.36s infinite ease-in-out",
+          "animationFillMode": "both",
+          "backgroundColor": "#bbb",
+          "borderRadius": "10px",
+          "height": "50px",
+          "left": "68px",
+          "margin": "50px",
+          "position": "absolute",
+          "top": "0",
+          "transform": "rotate(90deg)",
+          "transition": "2s",
+          "width": "10px",
+        }
+      }
+    />
+    <span
+      style={
+        {
+          "animation": "react-spinners-FadeLoader-fade 1.2s 0.48s infinite ease-in-out",
+          "animationFillMode": "both",
+          "backgroundColor": "#bbb",
+          "borderRadius": "10px",
+          "height": "50px",
+          "left": "46.36363636363636px",
+          "margin": "50px",
+          "position": "absolute",
+          "top": "-46.36363636363636px",
+          "transform": "rotate(45deg)",
+          "transition": "2s",
+          "width": "10px",
+        }
+      }
+    />
+    <span
+      style={
+        {
+          "animation": "react-spinners-FadeLoader-fade 1.2s 0.6s infinite ease-in-out",
+          "animationFillMode": "both",
+          "backgroundColor": "#bbb",
+          "borderRadius": "10px",
+          "height": "50px",
+          "left": "0",
+          "margin": "50px",
+          "position": "absolute",
+          "top": "-68px",
+          "transition": "2s",
+          "width": "10px",
+        }
+      }
+    />
+    <span
+      style={
+        {
+          "animation": "react-spinners-FadeLoader-fade 1.2s 0.72s infinite ease-in-out",
+          "animationFillMode": "both",
+          "backgroundColor": "#bbb",
+          "borderRadius": "10px",
+          "height": "50px",
+          "left": "-46.36363636363636px",
+          "margin": "50px",
+          "position": "absolute",
+          "top": "-46.36363636363636px",
+          "transform": "rotate(-45deg)",
+          "transition": "2s",
+          "width": "10px",
+        }
+      }
+    />
+    <span
+      style={
+        {
+          "animation": "react-spinners-FadeLoader-fade 1.2s 0.84s infinite ease-in-out",
+          "animationFillMode": "both",
+          "backgroundColor": "#bbb",
+          "borderRadius": "10px",
+          "height": "50px",
+          "left": "-68px",
+          "margin": "50px",
+          "position": "absolute",
+          "top": "0",
+          "transform": "rotate(90deg)",
+          "transition": "2s",
+          "width": "10px",
+        }
+      }
+    />
+    <span
+      style={
+        {
+          "animation": "react-spinners-FadeLoader-fade 1.2s 0.96s infinite ease-in-out",
+          "animationFillMode": "both",
+          "backgroundColor": "#bbb",
+          "borderRadius": "10px",
+          "height": "50px",
+          "left": "-46.36363636363636px",
+          "margin": "50px",
+          "position": "absolute",
+          "top": "46.36363636363636px",
+          "transform": "rotate(45deg)",
+          "transition": "2s",
+          "width": "10px",
+        }
+      }
+    />
+  </span>
+</div>
+`;
+
+exports[`should match loader snapshot 1`] = `
 <div
   className="loader"
 >

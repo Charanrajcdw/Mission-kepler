@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal should match modal snapshot 1`] = `
+<div
+  className="modalContainer"
+  onClick={[Function]}
+>
+  <div
+    className="modalContent"
+    onClick={[Function]}
+  >
+    Modal Content
+  </div>
+</div>
+`;

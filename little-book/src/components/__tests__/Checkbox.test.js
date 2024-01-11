@@ -1,4 +1,4 @@
-import { render, screen, userEvent } from "../../utils/test.utils.jsx";
+import { render, screen, createSnapshot, userEvent } from "../../utils/test.utils.jsx";
 import Checkbox from "../Checkbox/Checkbox";
 import { SIDEBAR, WARNING_MODAL } from "../../constants";
 
@@ -7,6 +7,11 @@ describe("Checkbox", () => {
     render(<Checkbox label="local" modalHandler={() => {}} />);
     const checkboxGroup = screen.getByLabelText(`local ${SIDEBAR.blogs}`);
     expect(checkboxGroup).toBeInTheDocument();
+  });
+
+  it("should match checkbox snapshot", () => {
+    const checkbox = createSnapshot(<Checkbox label="local" modalHandler={() => {}} />);
+    expect(checkbox).toMatchSnapshot();
   });
 
   it("should change checked state", async () => {

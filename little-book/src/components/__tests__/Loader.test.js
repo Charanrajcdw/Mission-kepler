@@ -1,7 +1,7 @@
-import renderer from "react-test-renderer";
+import { createSnapshot } from "../../utils/test.utils";
 import Loader from "../Loader/Loader";
 
-it("loader renders correctly", () => {
-  const loader = renderer.create(<Loader />).toJSON();
+it("should match loader snapshot", () => {
+  const loader = createSnapshot(<Loader />);
   expect(loader).toMatchSnapshot();
 });

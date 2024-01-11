@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "../../utils/test.utils.jsx";
+import { fireEvent, render, screen, createSnapshot } from "../../utils/test.utils.jsx";
 import MembersCard from "../MembersCard/MembersCard";
 import BrokenImage from "../../assets/blank-image.jpeg";
 import { API_URLS } from "../../constants";
@@ -17,6 +17,16 @@ describe("MembersCard", () => {
     expect(nameElement).toBeInTheDocument();
     expect(addressElement).toBeInTheDocument();
     expect(imgElement).toHaveAttribute("src", `${API_URLS.images}${cardData.photo}`);
+  });
+
+  it("should match members card snapshot", () => {
+    const cardData = {
+      name: "username",
+      photo: "images/users/1.jpeg",
+      address: { city: "user address" },
+    };
+    const membersCard = createSnapshot(<MembersCard {...cardData} />);
+    expect(membersCard).toMatchSnapshot();
   });
 
   it("should render card with broken image if no img src available", () => {

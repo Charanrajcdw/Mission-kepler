@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal should match modal snapshot 1`] = `
+<div
+  className="warningModalContainer"
+>
+  <div
+    className="warningModalContent"
+  >
+    <p
+      className="title"
+    >
+      Unsaved changes will be lost. Are you sure to continue?
+    </p>
+    <div
+      className="buttonsContainer"
+    >
+      <button
+        className="btn blueBtn"
+        onClick={[Function]}
+      >
+        Cancel
+      </button>
+      <button
+        className="btn pinkBtn"
+        onClick={[Function]}
+      >
+        Continue
+      </button>
+    </div>
+  </div>
+</div>
+`;
