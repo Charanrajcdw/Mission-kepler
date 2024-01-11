@@ -4,6 +4,7 @@ import renderer from "react-test-renderer";
 import { Provider } from "react-redux";
 import ThemeContextProvider from "../contexts/theme.context";
 import blogSlice from "../store/slices/blogSlice";
+import { THEME } from "../constants";
 
 const customRender = (
   ui,
@@ -13,7 +14,7 @@ const customRender = (
       reducer: { blogs: blogSlice.reducer },
       preloadedState,
     }),
-    theme = "light",
+    theme = THEME.light,
     ...options
   } = {}
 ) => {
@@ -35,7 +36,7 @@ const customCreateSnapshot = (
       reducer: { blogs: blogSlice.reducer },
       preloadedState,
     }),
-    theme = "light",
+    theme = THEME.light,
   } = {}
 ) => {
   const ProviderWrapper = ({ children }) => {

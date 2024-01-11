@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const filterData = (blogs, filters, searchTerm) => {
+const filterData = (blogs, filters = [], searchTerm = "") => {
   return blogs.filter((blog) => filters.includes(blog.type.toLowerCase()) && blog.title.toLowerCase().includes(searchTerm.toLowerCase()));
 };
 
