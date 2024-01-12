@@ -1,6 +1,6 @@
 import { render, userEvent, screen, createSnapshot } from "../../utils/test.utils";
 import Sidebar from "../Sidebar/Sidebar";
-import { SIDEBAR, THEME } from "../../constants";
+import { SIDEBAR } from "../../constants";
 
 const blogTypes = ["type1", "type2", "type3"];
 jest.mock("../../components/Checkbox/Checkbox", () => () => <div data-testid="checkbox" />);

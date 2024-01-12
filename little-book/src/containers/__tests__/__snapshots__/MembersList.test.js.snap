@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Members list snapshots should match members list snapshot with members 1`] = `
+<DocumentFragment>
+  <div
+    class="membersListContainer"
+  >
+    <h2
+      class="membersListTitle"
+    >
+      Members
+    </h2>
+    <div
+      class="membersContainer"
+    >
+      <div
+        data-testid="membersCard"
+      />
+      <div
+        data-testid="membersCard"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Members list snapshots should match members list snapshot with no members 1`] = `
+<DocumentFragment>
+  <div
+    class="membersListContainer"
+  >
+    <h2
+      class="membersListTitle"
+    >
+      Members
+    </h2>
+    <div
+      class="membersContainer"
+    >
+      No members available
+    </div>
+  </div>
+</DocumentFragment>
+`;
