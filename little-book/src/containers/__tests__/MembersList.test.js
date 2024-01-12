@@ -29,6 +29,15 @@ describe("Members list UI", () => {
     const noMembersElement = await screen.findByText(MEMBERS_LIST.noMembers);
     expect(noMembersElement).toBeInTheDocument();
   });
+
+  it("should render no members content if there are no members", async () => {
+    axiosMock.get.mockRejectedValueOnce(new Error("custom error"));
+    render(<MembersList />);
+    await waitFor(() => expect(screen.getByTestId("loader")).toBeInTheDocument());
+    await waitFor(() => expect(screen.queryByTestId("loader")).toBeNull());
+    const noMembersElement = await screen.findByText(MEMBERS_LIST.noMembers);
+    expect(noMembersElement).toBeInTheDocument();
+  });
 });
 
 describe("Members list snapshots", () => {

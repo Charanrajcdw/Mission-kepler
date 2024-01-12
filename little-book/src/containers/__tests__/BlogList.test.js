@@ -41,6 +41,19 @@ describe("Blog List UI", () => {
     const noBlogsElement = await screen.findByText(BLOG_LIST.noBlogs);
     expect(noBlogsElement).toBeInTheDocument();
   });
+
+  it("should render no blogs content if axios call failed", async () => {
+    axiosMock.get.mockRejectedValueOnce(new Error("custom error"));
+    render(<BlogList modalHandler={() => {}} />);
+    const searchInput = screen.getByPlaceholderText(BLOG_LIST.searchText);
+    const newBlogButton = screen.getByText(BLOG_LIST.buttonText);
+    expect(searchInput).toBeInTheDocument();
+    expect(newBlogButton).toBeInTheDocument();
+    await waitFor(() => expect(screen.getByTestId("loader")).toBeInTheDocument());
+    await waitFor(() => expect(screen.queryByTestId("loader")).toBeNull());
+    const noBlogsElement = await screen.findByText(BLOG_LIST.noBlogs);
+    expect(noBlogsElement).toBeInTheDocument();
+  });
 });
 
 describe("Blog List UI", () => {
