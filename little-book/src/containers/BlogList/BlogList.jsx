@@ -5,7 +5,7 @@ import styles from "./BlogList.module.scss";
 import Button from "../../components/Button/Button";
 import BlogCard from "../../components/BlogCard/BlogCard";
 import Loader from "../../components/Loader/Loader";
-import { BLOG_LIST, MODAL } from "../../constants";
+import { BLOG_LIST, ENTER, MODAL } from "../../constants";
 import { getBlogs } from "../../services/blog.services";
 import { blogActions } from "../../store";
 
@@ -22,8 +22,8 @@ const BlogList = ({ modalHandler }) => {
     blogsRef.current.scrollTo(0, 0);
   }, [blogs]);
 
-  const searchHandler = (e) => {
-    dispatch(blogActions.modifySearchTerm(e.target.value));
+  const submitHandler = (e) => {
+    if (e.key === ENTER) dispatch(blogActions.modifySearchTerm(e.target.value));
   };
 
   const newBtnHandler = () => {
@@ -34,7 +34,7 @@ const BlogList = ({ modalHandler }) => {
   const blogChangeHandler = useCallback(
     (blog) => {
       if (isEditing) {
-        modalHandler(false, true);
+        modalHandler(false, blogActions.modifyCurrentBlog(blog));
         return;
       }
       dispatch(blogActions.modifyCurrentBlog(blog));
@@ -61,8 +61,8 @@ const BlogList = ({ modalHandler }) => {
           type="text"
           className={styles.search}
           placeholder={BLOG_LIST.searchText}
-          value={searchTerm}
-          onChange={searchHandler}
+          defaultValue={searchTerm}
+          onKeyDown={submitHandler}
           disabled={isEditing}
         />
         <Button className="pinkBtn" clickHandler={newBtnHandler} disabled={isEditing}>

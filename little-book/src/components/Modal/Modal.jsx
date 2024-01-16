@@ -2,13 +2,14 @@ import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import styles from "./Modal.module.scss";
 import { MODAL } from "../../constants";
+import { blogActions } from "../../store";
 
 const Modal = ({ modalHandler, children }) => {
   const { isEditing } = useSelector((state) => state.blogs);
 
   const removeModal = () => {
     if (isEditing) {
-      modalHandler(false, true);
+      modalHandler(false, blogActions.modifyEditStatus(false));
       return;
     }
     modalHandler(MODAL.remove, false);

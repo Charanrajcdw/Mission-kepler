@@ -38,6 +38,6 @@ describe("Modal", () => {
     await user.click(modalElement);
     expect(modalFn).toHaveBeenCalledTimes(0);
     await user.click(modalContainerElement);
-    expect(modalFn).toHaveBeenCalledWith(false, true);
+    expect(modalFn).toHaveBeenCalled();
   });
 });

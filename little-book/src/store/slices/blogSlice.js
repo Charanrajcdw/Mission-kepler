@@ -33,9 +33,11 @@ const blogSlice = createSlice({
       index === -1 ? state.selectedBlogTypes.push(action.payload) : state.selectedBlogTypes.splice(index, 1);
       state.filteredBlogData = filterData(state.blogData, state.selectedBlogTypes, state.searchTerm);
       state.currentBlog = state.filteredBlogData.length > 0 ? state.filteredBlogData[0] : null;
+      state.isEditing = false;
     },
     modifyCurrentBlog(state, action) {
       state.currentBlog = { ...action.payload };
+      state.isEditing = false;
     },
     modifySearchTerm(state, action) {
       state.searchTerm = action.payload;
@@ -46,10 +48,10 @@ const blogSlice = createSlice({
       const newBlog = { ...action.payload };
       const newBlogType = newBlog.type.toLowerCase();
       state.blogData = [newBlog, ...state.blogData];
-      state.currentBlog = { ...newBlog };
       !state.blogTypes.includes(newBlogType) && state.blogTypes.push(newBlogType);
       !state.selectedBlogTypes.includes(newBlogType) && state.selectedBlogTypes.push(newBlogType);
       state.filteredBlogData = filterData(state.blogData, state.selectedBlogTypes, state.searchTerm);
+      state.currentBlog = state.filteredBlogData.length > 0 ? state.filteredBlogData[0] : null;
       state.isEditing = false;
     },
     modifyEditStatus: (state, action) => {
@@ -58,9 +60,9 @@ const blogSlice = createSlice({
     editExistingBlog: (state, action) => {
       const blogData = state.blogData.filter((blog) => blog.title !== state.currentBlog.title);
       const modifiedBlog = { ...state.currentBlog, ...action.payload };
-      state.currentBlog = modifiedBlog;
       state.blogData = [modifiedBlog, ...blogData];
       state.filteredBlogData = filterData(state.blogData, state.selectedBlogTypes, state.searchTerm);
+      state.currentBlog = state.filteredBlogData.length > 0 ? state.filteredBlogData[0] : null;
       state.isEditing = false;
     },
   },

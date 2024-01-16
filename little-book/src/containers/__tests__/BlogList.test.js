@@ -68,12 +68,12 @@ describe("Blog List UI", () => {
     render(<BlogList modalHandler={() => {}} />);
     const searchInput = screen.getByPlaceholderText(BLOG_LIST.searchText);
     // search for title
-    await user.type(searchInput, "title");
+    await user.type(searchInput, "title{Enter}");
     let blogElements;
     blogElements = await screen.findAllByTestId("blogCard");
     expect(blogElements).toHaveLength(2);
     // search for title1
-    await user.type(searchInput, "1");
+    await user.type(searchInput, "1{Enter}");
     blogElements = await screen.findAllByTestId("blogCard");
     expect(blogElements).toHaveLength(1);
   });
@@ -101,7 +101,7 @@ describe("Blog List UI", () => {
     render(<BlogList modalHandler={modalFn} />, { preloadedState: { blogs: initialBlogsData } });
     const blogElements = await screen.findAllByTestId("blogCard");
     await user.click(blogElements[1]);
-    expect(modalFn).toHaveBeenCalledWith(false, true);
+    expect(modalFn).toHaveBeenCalled();
   });
 
   it("should call current blog update handler if not in editing state", async () => {

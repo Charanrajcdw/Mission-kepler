@@ -13,12 +13,12 @@ import { MODAL } from "../../constants";
 
 const Home = () => {
   const { currentTheme } = useContext(ThemeContext);
-  const [isWarningVisible, setIsWarningVisible] = useState(false);
+  const [warningModal, setWarningModal] = useState(false);
   const [currentModal, setCurrentModal] = useState();
 
-  const modalHandler = useCallback((modalValue, isWarning) => {
+  const modalHandler = useCallback((modalValue, warningModalAction) => {
     if (modalValue) modalValue === MODAL.remove ? setCurrentModal() : setCurrentModal(modalValue);
-    setIsWarningVisible(isWarning);
+    setWarningModal(warningModalAction);
   }, []);
 
   return (
@@ -33,7 +33,7 @@ const Home = () => {
             {currentModal == MODAL.newBlog && <BlogForm modalHandler={modalHandler} />}
           </Modal>
         )}
-        {isWarningVisible && <WarningModal modalHandler={modalHandler} />}
+        {warningModal && <WarningModal modalHandler={modalHandler} modalAction={warningModal} />}
       </Suspense>
     </div>
   );

@@ -7,7 +7,7 @@ jest.mock("../../components/Checkbox/Checkbox", () => () => <div data-testid="ch
 
 describe("Sidebar UI", () => {
   it("render sidebar with filter values", () => {
-    const initialBlogsData = { blogTypes: blogTypes };
+    const initialBlogsData = { blogTypes: blogTypes, selectedBlogTypes: blogTypes };
     render(<Sidebar modalHandler={() => {}} />, { preloadedState: { blogs: initialBlogsData } });
     const logoElement = screen.getByRole("heading");
     const filterTitleElement = screen.getByText(SIDEBAR.filter);
@@ -65,7 +65,7 @@ describe("Sidebar snapshots", () => {
   });
 
   it("should match sidebar snapshot with filters", () => {
-    const initialBlogsData = { blogTypes: blogTypes };
+    const initialBlogsData = { blogTypes: blogTypes, selectedBlogTypes: blogTypes };
     const sidebar = createSnapshot(<Sidebar modalHandler={() => {}} />, { preloadedState: { blogs: initialBlogsData } });
     expect(sidebar).toMatchSnapshot();
   });

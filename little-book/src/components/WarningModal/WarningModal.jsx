@@ -5,12 +5,12 @@ import Button from "../Button/Button";
 import { MODAL, WARNING_MODAL } from "../../constants";
 import { blogActions } from "../../store";
 
-const WarningModal = ({ modalHandler }) => {
+const WarningModal = ({ modalHandler, modalAction }) => {
   const dispatch = useDispatch();
 
   const continueHandler = () => {
     modalHandler(MODAL.remove, false);
-    dispatch(blogActions.modifyEditStatus(false));
+    modalAction && dispatch(modalAction);
   };
 
   const cancelHandler = () => {
@@ -36,6 +36,7 @@ const WarningModal = ({ modalHandler }) => {
 
 WarningModal.propTypes = {
   modalHandler: PropTypes.func.isRequired,
+  modalAction: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]).isRequired,
 };
 
 export default WarningModal;

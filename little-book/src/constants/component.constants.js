@@ -25,3 +25,5 @@ export const WARNING_MODAL = {
   continue: "Continue",
   cancel: "Cancel",
 };
+
+export const ENTER = "Enter";

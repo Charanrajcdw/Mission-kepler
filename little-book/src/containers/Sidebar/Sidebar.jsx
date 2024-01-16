@@ -8,7 +8,8 @@ import { ThemeContext } from "../../contexts/theme.context";
 
 const Sidebar = ({ modalHandler }) => {
   const LOGO = SIDEBAR.logo.split(" ");
-  const { blogTypes: filterValues } = useSelector((state) => state.blogs);
+  const filterValues = useSelector((state) => state.blogs.blogTypes);
+  const selectedBlogTypes = useSelector((state) => state.blogs.selectedBlogTypes);
   const { currentTheme, toggleTheme } = useContext(ThemeContext);
 
   const changeTheme = () => {
@@ -18,7 +19,9 @@ const Sidebar = ({ modalHandler }) => {
   const getFilterContent = () => {
     let filterContent = "";
     if (filterValues.length > 0) {
-      filterContent = filterValues.map((filter) => <Checkbox key={filter} label={filter} modalHandler={modalHandler} />);
+      filterContent = filterValues.map((filter) => (
+        <Checkbox key={filter} label={filter} modalHandler={modalHandler} isSelected={selectedBlogTypes.includes(filter)} />
+      ));
     } else {
       filterContent = <p>{SIDEBAR.noFilter}</p>;
     }

@@ -29,7 +29,7 @@ const MembersList = () => {
   return (
     <div className={styles.membersListContainer}>
       <h2 className={styles.membersListTitle}>{MEMBERS_LIST.title}</h2>
-      <div className={styles.membersContainer}>{isLoaded ? getMembersContent() : <Loader />}</div>
+      {isLoaded ? <div className={styles.membersContainer}>{getMembersContent()}</div> : <Loader />}
     </div>
   );
 };
