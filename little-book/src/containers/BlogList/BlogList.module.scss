@@ -1,0 +1,51 @@
+.blogListContainer {
+  background-color: var(--blog-list-bg);
+  width: 33.75%;
+  padding: 36px 28px 36px 40px;
+
+  .searchBar {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+
+    .search {
+      background-color: var(--blog-input-bg);
+      color: var(--blog-placeholder-bg);
+      border: none;
+      flex-basis: 22.5rem;
+      padding: 17.5px;
+      border-radius: 28px;
+      font-size: 0.9rem;
+      font-weight: 300;
+
+      &::placeholder {
+        color: var(--blog-placeholder-bg);
+      }
+
+      &:focus {
+        outline: 1px solid var(--pink);
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .blogsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 86vh;
+    overflow: auto;
+    margin: 24px 0;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .noBlogs {
+      color: var(--primary-font-bg);
+    }
+  }
+}

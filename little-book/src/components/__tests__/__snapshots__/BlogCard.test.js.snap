@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BlogCard should match Blog Card snapshot 1`] = `
+<div
+  className="blogCard selected"
+  onClick={[Function]}
+>
+  <h6
+    className="blogTitle"
+  >
+    Blog title
+  </h6>
+  <p
+    className="blogType"
+  >
+    Local
+  </p>
+  <p
+    className="blogDetails"
+  >
+    Blog details
+  </p>
+</div>
+`;

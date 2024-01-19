@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Blog details snapshots should match blog details snapshot in display mode 1`] = `
+<article
+  className="blogDetailsContainer"
+>
+  <div
+    className="Toastify"
+  />
+  <div
+    className="blogImg"
+  >
+    <img
+      alt="Blog title"
+      className="img"
+      onError={[Function]}
+      src="https://cdn.mos.cms.futurecdn.net/E3JYf6eJHQawCL2AR5cBv4.jpg"
+    />
+  </div>
+  <textarea
+    className="blogTitle"
+    onChange={[Function]}
+    readOnly={true}
+    value="Blog title"
+  />
+  <textarea
+    className="blogDetails"
+    onChange={[Function]}
+    readOnly={true}
+    value="Blog details"
+  />
+  <div
+    className="buttonsContainer"
+  >
+    <button
+      className="btn blueBtn smallBtn"
+      onClick={[Function]}
+    >
+      EDIT CONTENT
+    </button>
+  </div>
+</article>
+`;
+
+exports[`Blog details snapshots should match blog details snapshot in editing mode 1`] = `
+<article
+  className="blogDetailsContainer"
+>
+  <div
+    className="Toastify"
+  />
+  <div
+    className="blogImg"
+  >
+    <img
+      alt="Blog title"
+      className="img"
+      onError={[Function]}
+      src="https://cdn.mos.cms.futurecdn.net/E3JYf6eJHQawCL2AR5cBv4.jpg"
+    />
+  </div>
+  <textarea
+    className="blogTitle"
+    onChange={[Function]}
+    readOnly={false}
+  />
+  <textarea
+    className="blogDetails"
+    onChange={[Function]}
+    readOnly={false}
+  />
+  <div
+    className="buttonsContainer"
+  >
+    <button
+      className="btn blueBtn smallBtn"
+      onClick={[Function]}
+    >
+      CANCEL
+    </button>
+    <button
+      className="btn pinkBtn smallBtn"
+      onClick={[Function]}
+    >
+      SAVE CONTENT
+    </button>
+  </div>
+</article>
+`;

@@ -1,0 +1,24 @@
+@import "../../scss/fonts";
+
+.membersListContainer {
+  color: var(--primary-font-bg);
+  height: 90vh;
+
+  .membersListTitle {
+    font-family: $font-roboto;
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 28px;
+  }
+
+  .membersContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, calc(100% / 3 - 16px));
+    justify-content: space-between;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

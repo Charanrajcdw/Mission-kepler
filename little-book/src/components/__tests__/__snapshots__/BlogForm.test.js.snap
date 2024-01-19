@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BlogForm should match blog form snapshot 1`] = `
+<div
+  className="blogFormContainer"
+>
+  <div
+    className="Toastify"
+  />
+  <p
+    className="formTitle"
+  >
+    Add New Blog
+  </p>
+  <div
+    className="inputContainer"
+  >
+    <input
+      className="titleInput"
+      placeholder="Name your blog"
+      type="text"
+    />
+    <textarea
+      className="detailsInput"
+      placeholder="Write Content Here .."
+    />
+  </div>
+  <div
+    className="buttonContainer"
+  >
+    <button
+      className="btn pinkBtn"
+      onClick={[Function]}
+    >
+      ADD
+    </button>
+  </div>
+</div>
+`;

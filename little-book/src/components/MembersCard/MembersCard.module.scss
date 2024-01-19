@@ -1,0 +1,14 @@
+.memberCard {
+  margin-bottom: 36px;
+
+  .memberName {
+    color: var(--member-name);
+    font-size: 0.97rem;
+    padding-top: 6px;
+  }
+
+  .memberCity {
+    color: var(--member-city);
+    font-size: 0.88rem;
+  }
+}

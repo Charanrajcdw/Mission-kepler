@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Blog list snapshots should match blog list with blogs 1`] = `
+<DocumentFragment>
+  <div
+    class="blogListContainer"
+  >
+    <div
+      class="searchBar"
+    >
+      <input
+        class="search"
+        placeholder="Search Blogs"
+        type="text"
+        value=""
+      />
+      <button
+        class="btn pinkBtn"
+      >
+        NEW
+      </button>
+    </div>
+    <div
+      class="blogsContainer"
+    >
+      <div
+        data-selected="true"
+        data-testid="blogCard"
+      />
+      <div
+        data-selected="false"
+        data-testid="blogCard"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Blog list snapshots should match blog list with no blogs 1`] = `
+<DocumentFragment>
+  <div
+    class="blogListContainer"
+  >
+    <div
+      class="searchBar"
+    >
+      <input
+        class="search"
+        placeholder="Search Blogs"
+        type="text"
+        value=""
+      />
+      <button
+        class="btn pinkBtn"
+      >
+        NEW
+      </button>
+    </div>
+    <div
+      class="blogsContainer"
+    >
+      <p
+        class="noBlogs"
+      >
+        There is no blogs available
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;

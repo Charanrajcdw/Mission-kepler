@@ -1,0 +1,21 @@
+@import "../../scss/fonts";
+
+.checkBoxGroup {
+  font-family: $font-roboto;
+  display: flex;
+  align-items: center;
+
+  input[type="checkbox"] {
+    accent-color: var(--pink);
+    margin: 7px 14px 7px 0;
+    height: 20px;
+    width: 20px;
+  }
+
+  label {
+    font-size: 0.9rem;
+    &::first-letter {
+      text-transform: capitalize;
+    }
+  }
+}

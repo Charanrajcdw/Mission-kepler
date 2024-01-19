@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sidebar snapshots should match sidebar snapshot with filters 1`] = `
+<aside
+  className="sidebarContainer"
+>
+  <h1
+    className="title"
+  >
+    Little
+     
+    <span
+      className="titleLastWord"
+    >
+      Book
+    </span>
+  </h1>
+  <div
+    className="filtersContainer"
+  >
+    <p
+      className="filterTitle"
+    >
+      FILTER
+    </p>
+    <div>
+      <div
+        data-testid="checkbox"
+      />
+      <div
+        data-testid="checkbox"
+      />
+      <div
+        data-testid="checkbox"
+      />
+    </div>
+  </div>
+  <div
+    className="optionsContainer"
+  >
+    <p
+      className="members"
+      onClick={[Function]}
+    >
+      View Members
+    </p>
+    <p
+      className="theme"
+      onClick={[Function]}
+    >
+      Switch to Dark Mode
+    </p>
+  </div>
+</aside>
+`;
+
+exports[`Sidebar snapshots should match sidebar snapshot with no filters 1`] = `
+<aside
+  className="sidebarContainer"
+>
+  <h1
+    className="title"
+  >
+    Little
+     
+    <span
+      className="titleLastWord"
+    >
+      Book
+    </span>
+  </h1>
+  <div
+    className="filtersContainer"
+  >
+    <p
+      className="filterTitle"
+    >
+      FILTER
+    </p>
+    <div>
+      <p>
+        Add blogs to show filters
+      </p>
+    </div>
+  </div>
+  <div
+    className="optionsContainer"
+  >
+    <p
+      className="members"
+      onClick={[Function]}
+    >
+      View Members
+    </p>
+    <p
+      className="theme"
+      onClick={[Function]}
+    >
+      Switch to Dark Mode
+    </p>
+  </div>
+</aside>
+`;

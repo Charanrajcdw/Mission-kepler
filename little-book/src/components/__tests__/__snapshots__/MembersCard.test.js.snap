@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MembersCard should match members card snapshot 1`] = `
+<div
+  className="memberCard"
+>
+  <div
+    className="memberImg"
+  >
+    <img
+      alt="username"
+      className="img"
+      onError={[Function]}
+      src="https://jsonmockserver.vercel.app/images/users/1.jpeg"
+    />
+  </div>
+  <p
+    className="memberName"
+  >
+    username
+  </p>
+  <span
+    className="memberCity"
+  >
+    user address
+  </span>
+</div>
+`;

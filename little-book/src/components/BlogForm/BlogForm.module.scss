@@ -1,0 +1,53 @@
+@import "../../scss/fonts";
+
+.blogFormContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+  color: var(--primary-font-bg);
+
+  input,
+  textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-family: $font-roboto;
+    background-color: var(--modal-bg);
+    color: var(--primary-font-bg);
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--input-color);
+  }
+
+  .formTitle {
+    font-family: $font-roboto;
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 28px;
+  }
+
+  .inputContainer {
+    flex-grow: 1;
+
+    .titleInput {
+      margin: 20px 0;
+      font-size: 1.7rem;
+      font-weight: 400;
+    }
+    .detailsInput {
+      margin: 30px 0;
+      font-size: 1.05rem;
+      resize: none;
+    }
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

@@ -1,0 +1,51 @@
+@import "../../scss/fonts";
+
+.blogDetailsContainer {
+  background-color: var(--primary-bg);
+  width: 50.75%;
+  padding: 3rem 4rem 3rem 3.75rem;
+  height: 100vh;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .noBlog {
+    font-size: 2rem;
+    color: var(--primary-font-bg);
+  }
+
+  textarea {
+    background-color: var(--primary-bg);
+    color: var(--primary-font-bg);
+    width: 100%;
+    outline: none;
+    resize: none;
+    border: none;
+  }
+
+  .blogTitle {
+    margin: 28px 0 16px;
+    font-size: 2.2rem;
+    font-weight: 500;
+    font-family: $font-roboto;
+  }
+
+  .blogDetails {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    opacity: 0.8;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .buttonsContainer {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    margin: 15px 0;
+    gap: 15px;
+  }
+}
