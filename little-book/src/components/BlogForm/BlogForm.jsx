@@ -4,7 +4,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import PropTypes from "prop-types";
 import styles from "./BlogForm.module.scss";
-import Button from "../Button/Button";
+import { Button } from "..";
 import { ThemeContext } from "../../contexts/theme.context";
 import { showSuccessToast, showWarningToast } from "../../utils/toast.utils";
 import { BLOG_FORM, MODAL } from "../../constants";

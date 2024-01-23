@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import styles from "./MembersCard.module.scss";
-import Image from "../Image/Image";
+import { Image } from "..";
 import { API_URLS } from "../../constants";
 
 const MembersCard = ({ name, photo, address }) => {

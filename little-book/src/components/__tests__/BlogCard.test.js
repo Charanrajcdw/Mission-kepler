@@ -1,5 +1,5 @@
 import { render, screen, createSnapshot, userEvent } from "../../utils/test.utils.jsx";
-import BlogCard from "../BlogCard/BlogCard";
+import { BlogCard } from "..";
 
 describe("BlogCard", () => {
   it("should render Blog Card", () => {

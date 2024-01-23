@@ -1,5 +1,5 @@
 import { render, screen, createSnapshot, userEvent } from "../../utils/test.utils.jsx";
-import BlogForm from "../BlogForm/BlogForm";
+import { BlogForm } from "..";
 import { BLOG_FORM } from "../../constants";
 
 describe("BlogForm", () => {

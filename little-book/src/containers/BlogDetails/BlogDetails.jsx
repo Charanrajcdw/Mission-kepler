@@ -3,9 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import styles from "./BlogDetails.module.scss";
-import Image from "../../components/Image/Image";
-import Button from "../../components/Button/Button";
-import Loader from "../../components/Loader/Loader";
+import { Image, Button, Loader } from "../../components";
 import { showSuccessToast, showWarningToast } from "../../utils/toast.utils";
 import { ThemeContext } from "../../contexts/theme.context";
 import { BLOG_DETAILS } from "../../constants";
@@ -23,10 +21,12 @@ const BlogDetails = () => {
     blogDetailsRef.current && heightHandler(blogDetailsRef.current);
   }, [currentBlog]);
 
+  // handler function for onClick on edit blog button
   const editHandler = () => {
     dispatch(blogActions.modifyEditStatus(true));
   };
 
+  // handler function for onClick on save edit button
   const saveHandler = () => {
     const title = blogTitleRef.current.value.trim();
     const details = blogDetailsRef.current.value.trim();
@@ -41,13 +41,27 @@ const BlogDetails = () => {
     }
   };
 
+  // handler function for onClick on cancel edit button
   const cancelHandler = () => {
     dispatch(blogActions.modifyEditStatus(false));
   };
 
+  // handler function to scroll the blogs list to top
   const heightHandler = (element) => {
     element.style.height = "0px";
     element.style.height = element.scrollHeight + "px";
+  };
+
+  const textareaBuilder = (styleName, value, refValue) => {
+    return (
+      <textarea
+        className={styleName}
+        value={isEditing ? undefined : value}
+        readOnly={!isEditing}
+        onChange={(event) => heightHandler(event.target)}
+        ref={refValue}
+      />
+    );
   };
 
   return (
@@ -59,20 +73,8 @@ const BlogDetails = () => {
         ) : (
           <>
             <Image className="blogImg" src={currentBlog.photo} alt={currentBlog.title} />
-            <textarea
-              className={styles.blogTitle}
-              value={isEditing ? undefined : currentBlog.title}
-              readOnly={!isEditing}
-              onChange={(event) => heightHandler(event.target)}
-              ref={blogTitleRef}
-            />
-            <textarea
-              className={styles.blogDetails}
-              value={isEditing ? undefined : currentBlog.details}
-              readOnly={!isEditing}
-              onChange={(event) => heightHandler(event.target)}
-              ref={blogDetailsRef}
-            />
+            {textareaBuilder(styles.blogTitle, currentBlog.title, blogTitleRef)}
+            {textareaBuilder(styles.blogDetails, currentBlog.details, blogDetailsRef)}
             <div className={styles.buttonsContainer}>
               {isEditing ? (
                 <>

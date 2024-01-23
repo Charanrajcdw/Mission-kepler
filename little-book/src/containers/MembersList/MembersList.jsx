@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./MembersList.module.scss";
-import Loader from "../../components/Loader/Loader";
-import MembersCard from "../../components/MembersCard/MembersCard";
+import { Loader, MembersCard } from "../../components";
 import { getUsers } from "../../services/blog.services";
 import { MEMBERS_LIST } from "../../constants";
 

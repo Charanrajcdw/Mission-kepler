@@ -1,9 +1,8 @@
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import styles from "./WarningModal.module.scss";
-import Button from "../Button/Button";
+import { Button } from "..";
 import { MODAL, WARNING_MODAL } from "../../constants";
-import { blogActions } from "../../store";
 
 const WarningModal = ({ modalHandler, modalAction }) => {
   const dispatch = useDispatch();

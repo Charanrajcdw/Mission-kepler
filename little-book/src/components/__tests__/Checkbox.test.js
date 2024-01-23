@@ -1,6 +1,6 @@
 import { render, screen, createSnapshot, userEvent } from "../../utils/test.utils.jsx";
-import Checkbox from "../Checkbox/Checkbox";
-import { SIDEBAR, WARNING_MODAL } from "../../constants";
+import { Checkbox } from "..";
+import { SIDEBAR } from "../../constants";
 
 describe("Checkbox", () => {
   it("should render Checkbox", () => {

@@ -1,5 +1,5 @@
 import { userEvent, render, screen, createSnapshot } from "../../utils/test.utils.jsx";
-import WarningModal from "../WarningModal/WarningModal";
+import { WarningModal } from "..";
 import { MODAL, WARNING_MODAL } from "../../constants";
 import { blogActions } from "../../store";
 

@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import styles from "./Sidebar.module.scss";
-import Checkbox from "../../components/Checkbox/Checkbox";
+import { Checkbox } from "../../components";
 import { MODAL, SIDEBAR, THEME } from "../../constants";
 import { ThemeContext } from "../../contexts/theme.context";
 

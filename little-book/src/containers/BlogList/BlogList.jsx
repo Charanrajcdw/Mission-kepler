@@ -2,9 +2,7 @@ import { useCallback, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import styles from "./BlogList.module.scss";
-import Button from "../../components/Button/Button";
-import BlogCard from "../../components/BlogCard/BlogCard";
-import Loader from "../../components/Loader/Loader";
+import { Button, BlogCard, Loader } from "../../components";
 import { BLOG_LIST, ENTER, MODAL } from "../../constants";
 import { getBlogs } from "../../services/blog.services";
 import { blogActions } from "../../store";
@@ -22,15 +20,18 @@ const BlogList = ({ modalHandler }) => {
     blogsRef.current.scrollTo(0, 0);
   }, [blogs]);
 
+  // handler function to handle search term change submits
   const submitHandler = (e) => {
     if (e.key === ENTER) dispatch(blogActions.modifySearchTerm(e.target.value));
   };
 
+  // handler function for onClick on new blog button
   const newBtnHandler = () => {
     modalHandler(MODAL.newBlog, false);
     dispatch(blogActions.modifyEditStatus(true));
   };
 
+  // handler function for onClick on each blog to change current blog
   const blogChangeHandler = useCallback(
     (blog) => {
       if (isEditing) {

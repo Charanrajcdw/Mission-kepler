@@ -1,3 +1,7 @@
+.imageContainer {
+  position: relative;
+}
+
 .blogImg {
   height: 435px;
   img {
@@ -10,4 +14,14 @@
   img {
     border-radius: 15px 15px 15px 0;
   }
+}
+
+.loaderContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--primary-bg);
+  z-index: 1;
 }

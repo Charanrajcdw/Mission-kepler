@@ -1,5 +1,5 @@
 import { userEvent, render, screen, createSnapshot } from "../../utils/test.utils.jsx";
-import Modal from "../Modal/Modal";
+import { Modal } from "..";
 import { MODAL } from "../../constants";
 
 describe("Modal", () => {

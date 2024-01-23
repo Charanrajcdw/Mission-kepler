@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, createSnapshot } from "../../utils/test.utils.jsx";
-import MembersCard from "../MembersCard/MembersCard";
+import { MembersCard } from "..";
 import BrokenImage from "../../assets/blank-image.jpeg";
 import { API_URLS } from "../../constants";
 
